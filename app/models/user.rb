@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          generate_public_uid
          mount_uploader :image, ImageUploader
+         has_many :topics
 end
