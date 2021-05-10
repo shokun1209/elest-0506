@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_084851) do
+ActiveRecord::Schema.define(version: 2021_05_10_102637) do
 
   create_table "topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "text", null: false
-    t.integer "category", null: false
+    t.integer "category_id", null: false
     t.string "images"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "anonymous", null: false
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 

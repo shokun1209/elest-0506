@@ -6,4 +6,8 @@ class User < ApplicationRecord
          generate_public_uid
          mount_uploader :image, ImageUploader
          has_many :topics
+
+         with_options presence: true do
+          validates :nickname
+         end
 end
