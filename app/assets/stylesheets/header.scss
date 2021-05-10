@@ -1,0 +1,18 @@
+.header {
+  background-color: black;
+  height: 20vh;
+  position: relative;
+}
+.header-contents {
+  bottom: 0px;
+  right: 0px;
+  position: absolute;
+  display: flex;
+}
+.header-content{
+  padding: 20px;
+  background-color: antiquewhite;
+  margin: 30px;
+  color: gray;
+  text-decoration: none;
+}

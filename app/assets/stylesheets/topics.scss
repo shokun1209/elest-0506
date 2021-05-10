@@ -1,3 +1,29 @@
 // Place all the styles related to the topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.all{
+  display: flex;
+}
+.side{
+  width: 20vw;
+  background-color: brown;
+  height: 80vh;
+  text-align: center;
+}
+.index-icon{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: gray solid 1px;
+}
+.index-date{
+  font-size: 20px;
+}
+.side-category{
+  margin-top: 30px;
+  text-decoration: none;
+  color: antiquewhite;
+  display: block;
+  font-size: 25px;
+}

@@ -1,4 +1,5 @@
 class ImageUploader < CarrierWave::Uploader::Base
+
   if Rails.env.development?
     storage :file
   elsif Rails.env.test?
@@ -16,8 +17,4 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(png jpg jpeg)
   end
 
-  # ファイル名をランダムへ
-  def filename
-    "#{secure_token}.#{file.extension}" if original_filename.present?
-  end
 end

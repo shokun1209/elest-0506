@@ -1,0 +1,19 @@
+<%= render "shared/header" %>
+
+<div class="all">
+  <div class="side">
+    <%= link_to "アリーナ", root_path ,class:"side-category" %>
+    <%= link_to "グランバトル", root_path ,class:"side-category" %>
+    <%= link_to "イベント", root_path ,class:"side-category" %>
+    <%= link_to "ガチャ", root_path ,class:"side-category" %>
+    <%= link_to "晒し", root_path ,class:"side-category" %>
+    <%= link_to "その他", root_path ,class:"side-category" %>
+  </div>
+  <div class="main">
+    <% if user_signed_in? %>
+      <%= image_tag current_user.image_url, class:"index-icon" %>
+      <%= current_user.nickname %>
+      <%= current_user.public_uid %>
+    <% end %>
+  </div>
+</div>
