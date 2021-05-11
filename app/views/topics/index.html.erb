@@ -10,10 +10,24 @@
     <%= link_to "その他", root_path ,class:"side-category" %>
   </div>
   <div class="main">
-    <% if user_signed_in? %>
-      <%= image_tag current_user.image_url, class:"index-icon" %>
-      <%= current_user.nickname %>
-      <%= current_user.public_uid %>
-    <% end %>
+    <div class="main-right">
+      <div class="current-user">
+        <% if user_signed_in? %>
+          <p><%= current_user.nickname %></p>
+          <p>ID: <%= current_user.public_uid %></p>
+        <% end %>
+      </div>
+      <div class="topic-main">
+        <% @topics.each do |topics| %>
+          <%= link_to topic_path(topics.id) ,class:"topic-link" do %>
+            <div class="topics">
+              <%= topics.title %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="main-left">
+    </div>
   </div>
 </div>

@@ -1,0 +1,23 @@
+<%= render "shared/header" %>
+
+<div class="show-main">
+  <div class="show-topic">
+    <% if @topic.images.present? %>
+      <% @topic.images.each do |image| %>
+        <%= image_tag image.url %>
+      <% end %>
+    <% end %>
+    <h3>カテゴリー</h3>
+    <%= @topic.category.name %>
+    <h3>タイトル</h3>
+    <%= @topic.title %>
+    <h3>内容</h3>
+    <%= @topic.text %>
+    <% unless @topic.anonymous == true %>
+      <%= image_tag @topic.user.image_url, class:"header-icon" %>
+      <%= @topic.user.nickname %>
+    <% else %>
+      ID:<%= @topic.user.public_uid %>
+    <% end %>
+  </div>
+</div>

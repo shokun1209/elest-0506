@@ -16,5 +16,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w(png jpg jpeg)
   end
-
 end

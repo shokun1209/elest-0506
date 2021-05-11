@@ -8,15 +8,10 @@
 .side{
   width: 20vw;
   background-color: brown;
-  height: 80vh;
+  height: 70vh;
   text-align: center;
 }
-.index-icon{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: gray solid 1px;
-}
+
 .index-date{
   font-size: 20px;
 }
@@ -27,8 +22,35 @@
   display: block;
   font-size: 25px;
 }
-
 .form{
   display: block;
   margin-top: 30px;
+}
+
+.topic-main{
+  width: 30%;
+}
+.topic-link{
+  text-decoration: none;
+}
+.topics{
+  padding: 30px;
+  background-color: aquamarine;
+  margin-top: 30px;
+  color: black;
+}
+.main-right{
+  width: 50vw;
+}
+.main-left{
+  background-color: darkgreen;
+  width: 30vw;
+  height: 70vh;
+}
+.main{
+  display: flex;
+}
+.show-main{
+  display: flex;
+  justify-content: center;
 }

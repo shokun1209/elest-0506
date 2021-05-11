@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   def index
+    @topics = Topic.all.order('created_at DESC')
   end
 
   def new
@@ -13,6 +14,10 @@ class TopicsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
   end
 
   private

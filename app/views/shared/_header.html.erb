@@ -1,7 +1,18 @@
 
 <div class="header">
-  <div class="header-contents">
-  <% unless user_signed_in? %>
+  <div class="header-left">
+    <% if user_signed_in? %>
+      <div class="current-user">
+        <%= link_to user_path(current_user.id), class:"header-link" do %>
+          <%= image_tag current_user.image_url, class:"header-icon" %>
+          <p><%= current_user.nickname %></p>
+          <p>ID: <%= current_user.public_uid %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="header-right">
+    <% unless user_signed_in? %>
       <%= link_to "新規登録", new_user_registration_path, class:"header-content" %>
       <%= link_to "ログイン", new_user_session_path, class:"header-content" %>
     <% else %>
