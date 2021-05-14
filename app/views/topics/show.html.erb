@@ -1,24 +1,29 @@
 <%= render "shared/header" %>
 
-<div class="show-main">
-  <div class="show-topic">
+<div class="show-all">
+  <div class="show-main">
+      <div class="topic-title"><%= @topic.title %></div>
     <% if @topic.images.present? %>
-      <% @topic.images.each do |image| %>
-        <%= image_tag image.url, height:"150px", width:"auto" %>
-      <% end %>
+      <div class="show-photo">
+        <% @topic.images.each do |image| %>
+          <%= image_tag image.url, height:"150px", width:"auto" %>
+        <% end %>
+      </div>
     <% end %>
-    <div class="topic-date">カテゴリー: <%= @topic.category.name %></div>
-    <div class="topic-date">タイトル: <%= @topic.title %></div>
-    <div class="topic-date">内容:</div>
-    <div class="topic-text">
-      <%= @topic.text %><br>
-      <div class="topic-user">
-      <% unless @topic.anonymous == true %>
-        <%= image_tag @topic.user.image_url, class:"topic-icon" %>
-        <%= @topic.user.nickname %>
-      <% else %>
-        ID:<%= @topic.user.public_uid %>
-      <% end %>
+    <div class="show-topic-comments">
+      <div class="show-topic">
+        <div class="topic-category"><%= @topic.category.name %></div>
+        <div class="topic-text"><%= @topic.text %></div>
+        <div class="topic-user">
+          <% unless @topic.anonymous == true %>
+            <%= image_tag @topic.user.image_url, class:"topic-icon" %>
+            <%= time_ago_in_words(@topic.created_at) %>前<br>
+            <%= @topic.user.nickname %>
+          <% else %>
+            <%= time_ago_in_words(@topic.created_at) %>前<br>
+            ID: <%= @topic.user.public_uid %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
