@@ -4,20 +4,22 @@
   <div class="show-topic">
     <% if @topic.images.present? %>
       <% @topic.images.each do |image| %>
-        <%= image_tag image.url %>
+        <%= image_tag image.url, height:"150px", width:"auto" %>
       <% end %>
     <% end %>
-    <h3>カテゴリー</h3>
-    <%= @topic.category.name %>
-    <h3>タイトル</h3>
-    <%= @topic.title %>
-    <h3>内容</h3>
-    <%= @topic.text %>
-    <% unless @topic.anonymous == true %>
-      <%= image_tag @topic.user.image_url, class:"header-icon" %>
-      <%= @topic.user.nickname %>
-    <% else %>
-      ID:<%= @topic.user.public_uid %>
-    <% end %>
+    <div class="topic-date">カテゴリー: <%= @topic.category.name %></div>
+    <div class="topic-date">タイトル: <%= @topic.title %></div>
+    <div class="topic-date">内容:</div>
+    <div class="topic-text">
+      <%= @topic.text %><br>
+      <div class="topic-user">
+      <% unless @topic.anonymous == true %>
+        <%= image_tag @topic.user.image_url, class:"topic-icon" %>
+        <%= @topic.user.nickname %>
+      <% else %>
+        ID:<%= @topic.user.public_uid %>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>

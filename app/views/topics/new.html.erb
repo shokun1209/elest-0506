@@ -1,11 +1,23 @@
-<%= form_with model:@topic, local: true do |f| %>
-<%= render 'shared/error', model: f.object %>
-<%= f.file_field :images, multiple: true, class:"f-file form" %>
-<%= f.collection_select(:category_id, Category.all, :id, :name, {},{class: "f-category form"}) %>
-<%= f.text_field :title ,placeholder: "20文字以内", class:"f-title form" %>
-<%= f.text_area :text ,placeholder: "1000文字以内", class:"f-text form" %>
-<%= f.check_box :anonymous ,{checked: true}, "true", "false" %>
-<%= f.label :anonymous, "匿名表示にする" %>
-<%= f.submit "投稿", class:"f-submit form" %>
-<%=link_to 'もどる', root_path %>
-<% end %>
+<div class="topic-new">
+  <div class="form-main">
+    <%= form_with model:@topic, local: true do |f| %>
+      <%= render 'shared/error', model: f.object %>
+      <%= f.file_field :images, multiple: true,id: :topic_imgs, class:"f-file form" %>
+      <p>4枚まで投稿可能</p>
+      <%= image_tag @topic.images.url,id: :previews if @topic.images? %>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {},{class: "f-category form"}) %>
+      <%= f.text_field :title ,placeholder: "20文字以内", class:"f-title form" %>
+      <%= f.text_area :text ,placeholder: "1000文字以内", class:"f-text form" %>
+      <div class="checkbox">
+      <%= f.label :anonymous, "匿名表示にする" %>
+      <%= f.check_box :anonymous ,{checked: true}, "true", "false" %>
+      </div>
+      <div class="f-bottom">
+      <%= f.submit "投稿", class:"f-submit form" %>
+      </div>
+      <div class="rootpath form">
+      <%=link_to 'ホームへ戻る', root_path, class:"rootpath" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -22,10 +22,6 @@
   display: block;
   font-size: 25px;
 }
-.form{
-  display: block;
-  margin-top: 30px;
-}
 
 .topic-main{
   width: 30%;
@@ -54,3 +50,69 @@
   display: flex;
   justify-content: center;
 }
+.topic-date{
+  padding-top: 20px;
+}
+.topic-icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: black solid 2px;
+}
+.topic-new{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  height: 100vh;
+}
+.form-main{
+  background-color: rgba(0, 0, 0, 0.295);
+  position: relative;
+  padding: 20px 50px 50px 50px;
+}
+.f-file{
+  
+}
+.f-category{
+  height: 30px;
+  font-size: 14px;
+  width: 20%;
+}
+.f-title{
+  height: 30px;
+  font-size: 14px;
+  width: 40%;
+  padding: 1px 10px;
+}
+.f-text{
+  height: 200px;
+  width: 500px;
+  padding: 10px;
+  font-size: 14px;
+}
+.checkbox{
+  position:absolute;
+  right: 50px;
+  margin-top: 20px;
+}
+
+.f-bottom{
+  display: flex;
+  justify-content: center;
+}
+.f-submit{
+  padding: 10px 20px;
+}
+.rootpath{
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+.form{
+  display: block;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+
+
