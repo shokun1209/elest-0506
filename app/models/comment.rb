@@ -1,6 +1,8 @@
 class Comment < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :type
+  mount_uploaders :images, ImageUploader
+  serialize :images, JSON
   belongs_to :user
   belongs_to :topic
 

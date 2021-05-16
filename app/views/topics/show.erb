@@ -1,0 +1,57 @@
+<%= render "shared/header" %>
+
+<div class="show-all">
+  <div class="show-main">
+      <div class="topic-title"><%= @topic.title %></div>
+    <% if @topic.images.present? %>
+      <div class="show-photo">
+        <% @topic.images.each do |image| %>
+          <%= image_tag image.url, height:"150px", width:"auto" %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="show-topic-comments">
+      <div class="show-topic">
+        <div class="topic-category"><%= @topic.category.name %></div>
+        <div class="topic-text"><%= @topic.text %></div>
+        <div class="topic-user">
+          <% unless @topic.anonymous == true %>
+            <%= image_tag @topic.user.image_url, class:"topic-icon" %>
+            <%= time_ago_in_words(@topic.created_at) %>前<br>
+            <%= @topic.user.nickname %>
+          <% else %>
+            <%= time_ago_in_words(@topic.created_at) %>前<br>
+            ID: <%= @topic.user.public_uid %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="comments">
+      <% @comments.each do |comments| %>
+        <div class="comment">
+          <%= comments.comment %>
+          <% unless comments.anonymous == true %>
+            <%= image_tag comments.user.image_url, class:"topic-icon" %>
+            <%= time_ago_in_words(comments.created_at) %>前<br>
+            <%= comments.user.nickname %>
+          <% else %>
+            <%= time_ago_in_words(comments.created_at) %>前<br>
+            ID: <%= comments.user.public_uid %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="comment-form">
+      <%= form_with(model: [@topic,@comment],local: true) do |f| %>
+        <%= render 'shared/error', model: f.object %>
+        <%= f.file_field :images, multiple: true,id: :topic_imgs, class:"f-file form" %>
+        <p>4枚まで投稿可能</p>
+        <%= f.collection_select(:type_id, Type.all, :id, :name, {},{class: "f-category form"}) %>
+        <%= f.text_area :comment, placeholder: "コメントを入力", class:"message-content text" %>
+        <%= f.label :anonymous, "匿名表示にする" %>
+        <%= f.check_box :anonymous ,{checked: true}, "true", "false" %><br>
+        <%= f.submit "SEND", class:"message-content send btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
