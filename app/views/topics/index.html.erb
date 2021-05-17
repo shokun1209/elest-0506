@@ -17,7 +17,7 @@
             <%= topics.title %><br>
             <div class="topics-date">
               <div class="topics-category"><%= topics.category.name %></div>
-                <div class="index-user">
+              <div class="index-user">
                 <% unless topics.anonymous == true %>
                 <%= image_tag topics.user.image_url, class:"topic-icon" %>
                 <%= time_ago_in_words(topics.created_at) %>前<br>

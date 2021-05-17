@@ -2,7 +2,7 @@
   <div class="form-main">
     <%= form_with model:@topic, local: true do |f| %>
       <%= render 'shared/error', model: f.object %>
-      <%= f.file_field :images, multiple: true,id: :topic_imgs, class:"f-file form" %>
+      <%= f.file_field :images, multiple: true,id: :topic_imgs, class:"f-file" %>
       <p>4枚まで投稿可能</p>
       <%= image_tag @topic.images.url,id: :previews if @topic.images? %>
       <%= f.collection_select(:category_id, Category.all, :id, :name, {},{class: "f-category form"}) %>
@@ -15,8 +15,8 @@
       <div class="f-bottom">
       <%= f.submit "投稿", class:"f-submit form" %>
       </div>
-      <div class="rootpath form">
-      <%=link_to 'ホームへ戻る', root_path, class:"rootpath" %>
+      <div class="rootpath">
+      <%=link_to 'ホームへ戻る', root_path, class:"rootpath-btn" %>
       </div>
     <% end %>
   </div>
