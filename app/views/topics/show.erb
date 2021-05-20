@@ -13,6 +13,7 @@
       <div class="show-topic">
         <div class="topic-category"><%= @topic.category.name %></div>
         <div class="topic-text"><%= @topic.text %></div>
+        <div class="topic-bottom">
         <div class="topic-user">
           <% unless @topic.anonymous == true %>
             <%= image_tag @topic.user.image_url, class:"topic-icon" %>
@@ -27,10 +28,12 @@
             </div>
           <% end %>
         </div>
+        </div>
       </div>
     </div>
     <div class="comment-main">
       <div class="comments">
+        <% if @comments.present? %>
         <% @comments.each do |comments| %>
           <% if comments.type_id == 3 %>
             <div class="comment1">
@@ -83,6 +86,11 @@
               </div>
             </div>
           <% end %>
+        <% end %>
+        <% else %>
+        <div class="comment-none">
+        この投稿にはまだコメントがありません。
+        </div>
         <% end %>
       </div>
     </div>

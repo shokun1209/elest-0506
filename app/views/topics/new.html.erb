@@ -1,10 +1,17 @@
+<%# new.html.erb %>
+
 <div class="topic-new">
   <div class="form-main">
     <%= form_with model:@topic, local: true do |f| %>
       <%= render 'shared/error', model: f.object %>
-      <%= f.file_field :images, multiple: true,id: :topic_imgs, class:"f-file" %>
-      <p>4枚まで投稿可能</p>
-      <%= image_tag @topic.images.url,id: :previews if @topic.images? %>
+      <label>
+      <%= f.file_field :images, multiple: true, id: :topic_image, class:"f-file" %>
+      <div class="previews" id="image-list">
+      画像を選択<br>
+      (最大4枚)
+      </div>
+      </label>
+
       <%= f.collection_select(:category_id, Category.all, :id, :name, {},{class: "f-category form"}) %>
       <%= f.text_field :title ,placeholder: "20文字以内", class:"f-title form" %>
       <%= f.text_area :text ,placeholder: "1000文字以内", class:"f-text form" %>
@@ -21,3 +28,4 @@
     <% end %>
   </div>
 </div>
+

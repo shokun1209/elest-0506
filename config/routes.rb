@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :topics, only: [:index,:new,:create,:show,:destroy] do
     resources :comments, only: [:new, :create]
   end
-  resources :users, only: [:show,:edit,:destroy]
+  resources :users, only: [:show,:edit,:destroy,:new]
 end
