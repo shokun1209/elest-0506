@@ -13,8 +13,9 @@
       </label>
 
       <%= f.collection_select(:category_id, Category.all, :id, :name, {},{class: "f-category form"}) %>
-      <%= f.text_field :title ,placeholder: "20文字以内", class:"f-title form" %>
-      <%= f.text_area :text ,placeholder: "1000文字以内", class:"f-text form" %>
+      <div class="description">カテゴリーを選択</div>
+      <%= f.text_field :title ,autocomplete: 'off',placeholder: "タイトル (20文字以内)", class:"f-title form" %>
+      <%= f.text_area :text ,placeholder: "内容 (300文字以内)", class:"f-text form" %>
       <div class="checkbox">
       <%= f.label :anonymous, "匿名表示にする" %>
       <%= f.check_box :anonymous ,{checked: true}, "true", "false" %>

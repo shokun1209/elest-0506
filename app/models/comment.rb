@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
   belongs_to :topic
 
   with_options presence: true do
-    validates :comment, length: { maximum: 1000 }
+    validates :comment, length: { maximum: 300 }
     validates :type_id, numericality: { other_than: 1 }
   end
 end

@@ -12,7 +12,6 @@
     <% end %>
   </div>
   <div class="header-right">
-  <%= link_to "HOME", root_path, class:"header-content" %>
     <% unless user_signed_in? %>
       <%= link_to "新規登録", new_user_registration_path, class:"header-content" %>
       <%= link_to "ログイン", new_user_session_path, class:"header-content" %>

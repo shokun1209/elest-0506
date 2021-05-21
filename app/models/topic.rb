@@ -8,7 +8,7 @@ class Topic < ApplicationRecord
 
   with_options presence: true do
     validates :title, length: { maximum: 20 }
-    validates :text, length: { maximum: 1000 }
+    validates :text, length: { maximum: 300 }
     validates :category_id, numericality: { other_than: 1 }
   end
   validates :images, length:{ maximum: 4 }

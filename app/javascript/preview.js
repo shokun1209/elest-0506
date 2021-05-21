@@ -1,13 +1,12 @@
-// preview.js
 
 document.addEventListener('DOMContentLoaded', function(){
   if ( document.getElementById('topic_image')){
     const ImageList = document.getElementById("image-list");
     document.getElementById("topic_image").addEventListener("change",function(e){
 
-      // 問題のremove記述
-      const imageContents = document.querySelectorAll('img');
-      const count = imageContents.length
+      // 既にプレビューが表示されている場合、プレビューを削除
+      const imageContents = document.querySelectorAll('#currentThumb');
+      const count = imageContents.length;
       const imageContent = document.querySelector('#currentThumb');
       if (imageContent){
         for (let i = 0 ; i < count ; i++){

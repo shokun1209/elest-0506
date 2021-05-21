@@ -1,7 +1,6 @@
 .header {
-  background-image: url("elest_header.jpg");
-  background-size:cover;
-  height: 25vh;
+  background-color: black;
+  height: 120px;
   position: relative;
 }
 .header-left{
@@ -25,7 +24,7 @@
   text-decoration: none;
 }
 .current-user{
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
   box-sizing: border-box;
   color: white;
@@ -35,8 +34,8 @@
   color: white;
 }
 .header-icon{
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   border: white solid 3px;
 }

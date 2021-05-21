@@ -8,7 +8,7 @@
 .side{
   width: 20vw;
   background-color: brown;
-  height: 75vh;
+  height: calc(100vh - 120px);
   text-align: center;
 }
 
@@ -61,7 +61,7 @@
 }
 .main-left{
   width: 60vw;
-  height: 75vh;
+  height: calc(100vh - 120px);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -72,7 +72,7 @@
 .main-right{
   background-color: darkgreen;
   width: 20vw;
-  height: 75vh;
+  height: calc(100vh - 120px);
 }
 .main{
   display: flex;
@@ -117,10 +117,11 @@
 }
 .show-photo{
   text-align : center;
+  margin-bottom: 20px;
 }
 .topic-image{
   border: black solid 1px;
-  margin: 5px 5px 20px 5px;
+  margin: 5px 5px 0px 5px;
 }
 .topic-category{
   margin: 20px 0px;
@@ -312,10 +313,17 @@
   cursor: pointer;
   align-items: center;
   color: gray;
+  border:gray solid 1px;
 }
 
 .topic-preview{
-  border:black solid 1px;
+  border:gray solid 1px;
+}
+
+.description{
+  margin-top: 5px;
+  color: gray;
+  font-size: 14px;
 }
 
 img{

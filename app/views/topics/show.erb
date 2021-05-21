@@ -1,11 +1,13 @@
 
 <div class="show-all">
   <div class="show-main">
-      <div class="topic-title"><%= @topic.title %></div>
+      <div class="topic-title"><strong><%= @topic.title %></strong></div>
     <% if @topic.images.present? %>
       <div class="show-photo">
         <% @topic.images.each do |image| %>
-          <%= image_tag image.url, height:"150px", width:"auto" ,class:"topic-image" %>
+          <%= link_to image.url, 'data-lightbox': image do %>
+            <%= image_tag image.url, height:"150px", width:"150px" ,class:"topic-image" %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -40,7 +42,9 @@
               <% if comments.images.present? %>
                 <div class="show-photo">
                   <% comments.images.each do |image| %>
-                    <%= image_tag image.url, height:"100px", width:"auto" ,class:"topic-image" %>
+                    <%= link_to image.url, 'data-lightbox': image,class:"topic-image-link" do %>
+                      <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+                    <% end %>
                   <% end %>
                 </div>
               <% end %>
@@ -65,7 +69,10 @@
               <% if comments.images.present? %>
                 <div class="show-photo">
                   <% comments.images.each do |image| %>
-                    <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+                    <%= link_to image.url, 'data-lightbox': image,class:"topic-image-link" do %>
+                      <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+                    <% end %>
+                    <%# <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
                   <% end %>
                 </div>
               <% end %>
@@ -99,10 +106,16 @@
         <div class="comment-form">
           <%= form_with(model: [@topic,@comment],local: true) do |f| %>
             <%= render 'shared/error', model: f.object %>
-            <%= f.file_field :images, multiple: true,id: :topic_imgs, class:"f-file" %>
-            <p>4枚まで投稿可能</p>
+            <label>
+            <%= f.file_field :images, multiple: true, id: :topic_image, class:"f-file" %>
+            <div class="previews" id="image-list">
+            画像を選択<br>
+            (最大4枚)
+            </div>
+            </label>
+            
             <%= f.collection_select(:type_id, Type.all, :id, :name, {},{class: "f-type form"}) %>
-            <%= f.text_area :comment, placeholder: "コメントを入力", class:"f-comment-text form" %>
+            <%= f.text_area :comment, placeholder: "コメントを入力 (300文字以内)", class:"f-comment-text form" %>
             <div class="checkbox-comment">
             <%= f.label :anonymous, "匿名表示にする" %>
             <%= f.check_box :anonymous ,{checked: true}, "true", "false" %>
