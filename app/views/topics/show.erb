@@ -16,20 +16,25 @@
         <div class="topic-category"><%= @topic.category.name %></div>
         <div class="topic-text"><%= @topic.text %></div>
         <div class="topic-bottom">
-        <div class="topic-user">
-          <% unless @topic.anonymous == true %>
-            <%= image_tag @topic.user.image_url, class:"topic-icon" %>
-            <div class="date">
-              <%= time_ago_in_words(@topic.created_at) %>前<br>
-              <%= @topic.user.nickname %>
-            </div>
-          <% else %>
-            <div class="date">
-              <%= time_ago_in_words(@topic.created_at) %>前<br>
-              ID: <%= @topic.user.public_uid %>
-            </div>
-          <% end %>
-        </div>
+          <div class="topic-delete">
+            <% if user_signed_in? && @topic.user_id == current_user.id %>
+              <%= link_to "トピックを削除する", topic_path(@topic.id), method: :delete, data: {confirm: '一度削除すると復旧はできません。 本当に削除しますか？'}, class:"date" %>
+            <% end %>
+          </div>
+          <div class="topic-user">
+            <% unless @topic.anonymous == true %>
+              <%= image_tag @topic.user.image_url, class:"topic-icon" %>
+              <div class="date">
+                <%= time_ago_in_words(@topic.created_at) %>前<br>
+                <%= @topic.user.nickname %>
+              </div>
+            <% else %>
+              <div class="date">
+                <%= time_ago_in_words(@topic.created_at) %>前<br>
+                ID: <%= @topic.user.public_uid %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

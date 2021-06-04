@@ -4,7 +4,7 @@ class Topic < ApplicationRecord
   mount_uploaders :images, ImageUploader
   serialize :images, JSON
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   with_options presence: true do
     validates :title, length: { maximum: 20 }
