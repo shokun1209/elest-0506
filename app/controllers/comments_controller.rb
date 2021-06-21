@@ -11,6 +11,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find_by(id: params[:id],topic_id: params[:topic_id])
+    @comment.destroy
+    redirect_to topic_path(@topic.id)
   end
 
   private

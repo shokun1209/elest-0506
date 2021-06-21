@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 .all{
   display: flex;
 }
@@ -80,6 +81,7 @@
 .show-all{
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .show-all:before{
   content:"";
@@ -251,8 +253,8 @@
 }
 .comment-user{
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-top: 10px;
 }
 .comment-form-main{
@@ -295,7 +297,6 @@
 .date{
   text-align: center;
   font-size: 12px;
-  // text-decoration: none;
   color: rgba(0, 0, 0, 0.70);
 }
 .comment-none{
@@ -331,4 +332,14 @@
 
 img{
   box-sizing: border-box;
+}
+
+.topic-date{
+  display: flex;
+  align-items: flex-end;
+}
+
+.home-image{
+  border-radius: 50%;
+  width: 60px;
 }

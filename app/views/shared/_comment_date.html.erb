@@ -1,0 +1,34 @@
+<% @topic = Topic.find(params[:id]) %>
+<% comments = @topic.comments %>
+
+<% if comments.images.present? %>
+  <div class="show-photo">
+    <% comments.images.each do |image| %>
+      <%= link_to image.url, 'data-lightbox': image,class:"topic-image-link" do %>
+        <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+<%= comments.comment %><br>
+<div class="comment-user">
+<div class="date">
+  <% if user_signed_in? && comments.user_id == current_user.id %>
+    <%= link_to "コメントを削除する", topic_comment_path(comments.topic_id, comments.id), method: :delete, data: {confirm: '一度削除すると復旧はできません。 本当に削除しますか？'}, class:"date"%>
+  <% end %>
+</div>
+  <div class="topic-date">
+    <% unless comments.anonymous == true %>
+      <%= image_tag comments.user.image_url, class:"topic-icon" %>
+      <div class="date">
+        <%= time_ago_in_words(comments.created_at) %>前<br>
+        <%= comments.user.nickname %>
+      </div>
+      <% else %>
+      <div class="date">
+        <%= time_ago_in_words(comments.created_at) %>前<br>
+        ID: <%= comments.user.public_uid %>
+      </div>
+    <% end %>
+  </div>
+</div>

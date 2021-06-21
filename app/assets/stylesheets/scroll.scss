@@ -1,0 +1,66 @@
+.scroll{
+  position: relative;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.685);
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  border: rgba(0, 0, 0, 0.685) solid 2px;
+  bottom: 30px;
+  right: 3vw;
+  cursor: pointer;
+  transition: .3s;
+  color: lightgray;
+ }
+.scroll-btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  text-align: center;
+  font-size: 25px;
+}
+.scroll:hover{
+  border: black solid 2px;
+  color:black;
+  background-color: whitesmoke;
+}
+.scroll:active{
+  background-color: rgba(0, 0, 0, 0.685);
+  color: lightgray;
+}
+
+
+.home{
+  position: relative;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.685);
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  border: rgba(0, 0, 0, 0.685) solid 2px;
+  bottom: 120px;
+  right: 3vw;
+  cursor: pointer;
+  transition: .3s;
+  color: lightgray;
+}
+.home-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  text-align: center;
+  font-size: 25px;
+}
+.home:hover{
+  border: black solid 2px;
+  color:black;
+  background-color: whitesmoke;
+}
+.home:active{
+  background-color: rgba(0, 0, 0, 0.685);
+  color: lightgray;
+}

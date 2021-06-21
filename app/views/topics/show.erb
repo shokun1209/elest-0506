@@ -41,64 +41,77 @@
     <div class="comment-main">
       <div class="comments">
         <% if @comments.present? %>
-        <% @comments.each do |comments| %>
-          <% if comments.type_id == 3 %>
-            <div class="comment1">
-              <% if comments.images.present? %>
-                <div class="show-photo">
-                  <% comments.images.each do |image| %>
-                    <%= link_to image.url, 'data-lightbox': image,class:"topic-image-link" do %>
-                      <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+          <% @comments.each do |comments| %>
+            <% if comments.type_id == 3 %>
+              <div class="comment1">
+                <% if comments.images.present? %>
+                  <div class="show-photo">
+                    <% comments.images.each do |image| %>
+                      <%= link_to image.url, 'data-lightbox': image,class:"topic-image-link" do %>
+                        <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-              <%= comments.comment %><br>
-              <div class="comment-user">
-                <% unless comments.anonymous == true %>
-                  <%= image_tag comments.user.image_url, class:"topic-icon" %>
-                  <div class="date">
-                    <%= time_ago_in_words(comments.created_at) %>前<br>
-                    <%= comments.user.nickname %>
-                  </div>
-                <% else %>
-                  <div class="date">
-                    <%= time_ago_in_words(comments.created_at) %>前<br>
-                    ID: <%= comments.user.public_uid %>
                   </div>
                 <% end %>
-              </div>
-            </div>
-          <% else %>
-            <div class="comment2">
-              <% if comments.images.present? %>
-                <div class="show-photo">
-                  <% comments.images.each do |image| %>
-                    <%= link_to image.url, 'data-lightbox': image,class:"topic-image-link" do %>
-                      <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
-                    <% end %>
-                    <%# <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+                <%= comments.comment %><br>
+                <div class="comment-user">
+                <div class="date">
+                <% if user_signed_in? && comments.user_id == current_user.id %>
+                  <%= link_to "コメントを削除する", topic_comment_path(comments.topic_id, comments.id), method: :delete, data: {confirm: '一度削除すると復旧はできません。 本当に削除しますか？'}, class:"date"%>
                   <% end %>
-                </div>
-              <% end %>
-              <%= comments.comment %><br>
-              <div class="comment-user">
-                <% unless comments.anonymous == true %>
-                  <%= image_tag comments.user.image_url, class:"topic-icon" %>
-                  <div class="date">
-                    <%= time_ago_in_words(comments.created_at) %>前<br>
-                    <%= comments.user.nickname %>
                   </div>
-                <% else %>
-                  <div class="date">
-                    <%= time_ago_in_words(comments.created_at) %>前<br>
-                    ID: <%= comments.user.public_uid %>
+                    <div class="topic-date">
+                    <% unless comments.anonymous == true %>
+                      <%= image_tag comments.user.image_url, class:"topic-icon" %>
+                      <div class="date">
+                        <%= time_ago_in_words(comments.created_at) %>前<br>
+                        <%= comments.user.nickname %>
+                      </div>
+                      <% else %>
+                      <div class="date">
+                        <%= time_ago_in_words(comments.created_at) %>前<br>
+                        ID: <%= comments.user.public_uid %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% else %>
+              <div class="comment2">
+                <% if comments.images.present? %>
+                  <div class="show-photo">
+                    <% comments.images.each do |image| %>
+                      <%= link_to image.url, 'data-lightbox': image,class:"topic-image-link" do %>
+                        <%= image_tag image.url, height:"100px", width:"100px" ,class:"topic-image" %>
+                      <% end %>
+                    <% end %>
                   </div>
                 <% end %>
+                <%= comments.comment %><br>
+                <div class="comment-user">
+                  <div class="date">
+                    <% if user_signed_in? && comments.user_id == current_user.id %>
+                      <%= link_to "コメントを削除する", topic_comment_path(comments.topic_id, comments.id), method: :delete, data: {confirm: '一度削除すると復旧はできません。 本当に削除しますか？'}, class:"date"%>
+                    <% end %>
+                  </div>
+                  <div class="topic-date">
+                    <% unless comments.anonymous == true %>
+                      <%= image_tag comments.user.image_url, class:"topic-icon" %>
+                      <div class="date">
+                        <%= time_ago_in_words(comments.created_at) %>前<br>
+                        <%= comments.user.nickname %>
+                      </div>
+                      <% else %>
+                      <div class="date">
+                        <%= time_ago_in_words(comments.created_at) %>前<br>
+                        ID: <%= comments.user.public_uid %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
         <% else %>
         <div class="comment-none">
         この投稿にはまだコメントがありません。
@@ -114,16 +127,15 @@
             <label>
             <%= f.file_field :images, multiple: true, id: :topic_image, class:"f-file" %>
             <div class="previews" id="image-list">
-            画像を選択<br>
-            (最大4枚)
+              画像を選択<br>
+              (最大4枚)
             </div>
             </label>
-            
             <%= f.collection_select(:type_id, Type.all, :id, :name, {},{class: "f-type form"}) %>
             <%= f.text_area :comment, placeholder: "コメントを入力 (300文字以内)", class:"f-comment-text form" %>
             <div class="checkbox-comment">
-            <%= f.label :anonymous, "匿名表示にする" %>
-            <%= f.check_box :anonymous ,{checked: true}, "true", "false" %>
+              <%= f.label :anonymous, "匿名表示にする" %>
+              <%= f.check_box :anonymous ,{checked: true}, "true", "false" %>
             </div>
             <%= f.submit "コメントを投稿する", class:"f-submit" %>
           <% end %>
@@ -131,4 +143,6 @@
       <% end %>
     </div>
   </div>
+  <%= render "shared/home" %>
+  <%= render "shared/scroll" %>
 </div>
