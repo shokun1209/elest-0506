@@ -22,6 +22,19 @@
             <% end %>
           </div>
           <div class="topic-user">
+            <% if user_signed_in? && current_user.liked_by?(@topic) %>
+              <%= link_to topic_like_path(@topic), method: :DELETE, class:"good_after" do %>
+                <%= image_tag 'good.png', class:"good_icon" %>
+                <%= @topic.likes.count %>
+              <% end %>
+            <% elsif user_signed_in? %>
+              <%= link_to topic_likes_path(@topic), method: :POST, class:"good_before" do %>
+                <%= image_tag 'good.png', class:"good_icon" %>
+                <%= @topic.likes.count %>
+              <% end %>
+            <% else %>
+              <%= link_to 'ログインしていいねする' , new_user_session_path %><%= @topic.likes.count %>
+            <% end %>
             <% unless @topic.anonymous == true %>
               <%= image_tag @topic.user.image_url, class:"topic-icon" %>
               <div class="date">
@@ -30,7 +43,7 @@
               </div>
             <% else %>
               <div class="date">
-                <%= time_ago_in_words(@topic.created_at) %>前<br>
+                <%= time_ago_in_words(@topic.created_at) %>前<br> 
                 ID: <%= @topic.user.public_uid %>
               </div>
             <% end %>

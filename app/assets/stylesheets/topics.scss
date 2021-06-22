@@ -343,3 +343,30 @@ img{
   border-radius: 50%;
   width: 60px;
 }
+
+.good_after{
+  border: gray solid 1px;
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 3px;
+  margin-right: 10px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  color: gray;
+  background-color:rgb(210, 245, 255);
+}
+.good_before{
+  border: gray solid 1px;
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 3px;
+  margin-right: 10px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  color: gray;
+}
+.good_icon{
+  width: 20px;
+}
