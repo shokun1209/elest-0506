@@ -345,21 +345,35 @@ img{
 }
 
 .good_after{
-  border: gray solid 1px;
+  border: black solid 1px;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 14px;
   padding: 3px;
   margin-right: 10px;
   display: flex;
   align-items: flex-end;
   text-decoration: none;
-  color: gray;
-  background-color:rgb(210, 245, 255);
+  color: black;
+  background-color: rgb(255, 255, 0);
 }
+
+.bad_after{
+  border: rgb(0, 0, 0) solid 1px;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 3px;
+  margin-right: 10px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(255, 100, 100);
+}
+
 .good_before{
   border: gray solid 1px;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 14px;
   padding: 3px;
   margin-right: 10px;
   display: flex;

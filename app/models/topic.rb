@@ -7,6 +7,8 @@ class Topic < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :bads, dependent: :destroy
+  has_many :baded_users, through: :likes, source: :user
 
   with_options presence: true do
     validates :title, length: { maximum: 20 }

@@ -24,7 +24,7 @@
           <div class="topic-user">
             <% if user_signed_in? && current_user.liked_by?(@topic) %>
               <%= link_to topic_like_path(@topic), method: :DELETE, class:"good_after" do %>
-                <%= image_tag 'good.png', class:"good_icon" %>
+                <%= image_tag 'good1.png', class:"good_icon" %>
                 <%= @topic.likes.count %>
               <% end %>
             <% elsif user_signed_in? %>
@@ -34,6 +34,17 @@
               <% end %>
             <% else %>
               <%= link_to 'ログインしていいねする' , new_user_session_path %><%= @topic.likes.count %>
+            <% end %>
+            <% if user_signed_in? && current_user.baded_by?(@topic) %>
+              <%= link_to topic_bad_path(@topic), method: :DELETE, class:"bad_after" do %>
+                <%= image_tag 'bad1.png', class:"good_icon" %>
+                <%= @topic.bads.count %>
+              <% end %>
+            <% else user_signed_in? %>
+              <%= link_to topic_bads_path(@topic), method: :POST, class:"good_before" do %>
+                <%= image_tag 'bad.png', class:"good_icon" %>
+                <%= @topic.bads.count %>
+              <% end %>
             <% end %>
             <% unless @topic.anonymous == true %>
               <%= image_tag @topic.user.image_url, class:"topic-icon" %>

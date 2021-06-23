@@ -24,7 +24,7 @@
         <%= time_ago_in_words(comments.created_at) %>前<br>
         <%= comments.user.nickname %>
       </div>
-      <% else %>
+    <% else %>
       <div class="date">
         <%= time_ago_in_words(comments.created_at) %>前<br>
         ID: <%= comments.user.public_uid %>

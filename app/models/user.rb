@@ -12,6 +12,11 @@ class User < ApplicationRecord
          def liked_by?(topic_id)
           likes.where(topic_id: topic_id).exists?
         end
+        has_many :bads, dependent: :destroy
+        has_many :baded_topics, through: :likes, source: :topic
+        def baded_by?(topic_id)
+         bads.where(topic_id: topic_id).exists?
+       end
          with_options presence: true do
           validates :nickname
         end
