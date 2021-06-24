@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    
+
     @comment = Comment.new
     @comments = @topic.comments
   end
@@ -29,6 +29,46 @@ class TopicsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def arena
+    @topics = Topic.where(category_id:2).order('created_at DESC')
+    render action: "index"
+  end
+
+  def gran
+    @topics = Topic.where(category_id:3).order('created_at DESC')
+    render action: "index"
+  end
+
+  def event
+    @topics = Topic.where(category_id:4).order('created_at DESC')
+    render action: "index"
+  end
+
+  def gacha
+    @topics = Topic.where(category_id:5).order('created_at DESC')
+    render action: "index"
+  end
+
+  def doxing
+    @topics = Topic.where(category_id:6).order('created_at DESC')
+    render action: "index"
+  end
+
+  def team
+    @topics = Topic.where(category_id:7).order('created_at DESC')
+    render action: "index"
+  end
+
+  def other
+    @topics = Topic.where(category_id:8).order('created_at DESC')
+    render action: "index"
+  end
+
+  def search_self
+    @topics = Topic.search(params[:keyword])
+    render action: "index"
   end
 
 

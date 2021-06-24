@@ -2,12 +2,16 @@
 
 <div class="all">
   <div class="side">
-    <%= link_to "アリーナ", root_path ,class:"side-category" %>
-    <%= link_to "グランバトル", root_path ,class:"side-category" %>
-    <%= link_to "イベント", root_path ,class:"side-category" %>
-    <%= link_to "ガチャ", root_path ,class:"side-category" %>
-    <%= link_to "晒し", root_path ,class:"side-category" %>
-    <%= link_to "その他", root_path ,class:"side-category" %>
+    <%= link_to "アリーナ", arena_topics_path ,class:"side-category" %>
+    <%= link_to "グランバトル", gran_topics_path ,class:"side-category" %>
+    <%= link_to "イベント", event_topics_path ,class:"side-category" %>
+    <%= link_to "ガチャ", gacha_topics_path ,class:"side-category" %>
+    <%= link_to "晒し", doxing_topics_path ,class:"side-category" %>
+    <%= link_to "その他", other_topics_path ,class:"side-category" %>
+    <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "タイトルで検索", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
   </div>
   <div class="main">
     <div class="main-left">

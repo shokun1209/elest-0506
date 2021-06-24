@@ -16,4 +16,12 @@ class Topic < ApplicationRecord
     validates :category_id, numericality: { other_than: 1 }
   end
   validates :images, length:{ maximum: 4 }
+
+  def self.search(search)
+    if search != ""
+      Topic.where('title LIKE(?)', "%#{search}%")
+    else
+      Topic.all
+    end
+  end
 end

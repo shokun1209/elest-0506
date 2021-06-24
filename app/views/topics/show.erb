@@ -22,30 +22,10 @@
             <% end %>
           </div>
           <div class="topic-user">
-            <% if user_signed_in? && current_user.liked_by?(@topic) %>
-              <%= link_to topic_like_path(@topic), method: :DELETE, class:"good_after" do %>
-                <%= image_tag 'good1.png', class:"good_icon" %>
-                <%= @topic.likes.count %>
-              <% end %>
-            <% elsif user_signed_in? %>
-              <%= link_to topic_likes_path(@topic), method: :POST, class:"good_before" do %>
-                <%= image_tag 'good.png', class:"good_icon" %>
-                <%= @topic.likes.count %>
-              <% end %>
-            <% else %>
-              <%= link_to 'ログインしていいねする' , new_user_session_path %><%= @topic.likes.count %>
-            <% end %>
-            <% if user_signed_in? && current_user.baded_by?(@topic) %>
-              <%= link_to topic_bad_path(@topic), method: :DELETE, class:"bad_after" do %>
-                <%= image_tag 'bad1.png', class:"good_icon" %>
-                <%= @topic.bads.count %>
-              <% end %>
-            <% else user_signed_in? %>
-              <%= link_to topic_bads_path(@topic), method: :POST, class:"good_before" do %>
-                <%= image_tag 'bad.png', class:"good_icon" %>
-                <%= @topic.bads.count %>
-              <% end %>
-            <% end %>
+            <div id="likes_buttons_<%= @topic.id %>">
+              <%= render 'likes/good' %>
+            </div>
+            <%= render 'shared/bad' %>
             <% unless @topic.anonymous == true %>
               <%= image_tag @topic.user.image_url, class:"topic-icon" %>
               <div class="date">
@@ -65,9 +45,10 @@
     <div class="comment-main">
       <div class="comments">
         <% if @comments.present? %>
-          <% @comments.each do |comments| %>
+          <% @comments.each.with_index(1) do |comments, idx| %>
             <% if comments.type_id == 3 %>
               <div class="comment1">
+                <div class="idx">[<%= idx %>]</div>
                 <% if comments.images.present? %>
                   <div class="show-photo">
                     <% comments.images.each do |image| %>
@@ -102,6 +83,7 @@
               </div>
             <% else %>
               <div class="comment2">
+              <div class="idx">[<%= idx %>]</div>
                 <% if comments.images.present? %>
                   <div class="show-photo">
                     <% comments.images.each do |image| %>
