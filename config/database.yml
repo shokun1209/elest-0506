@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: elest_0506_production
-  username: elest_0506
-  password: <%= ENV['ELEST_0506_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
