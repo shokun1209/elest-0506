@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :destroy]
+  before_action :set_attention
   def index
     @topics = Topic.all.order('created_at DESC')
   end
@@ -18,7 +19,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-
     @comment = Comment.new
     @comments = @topic.comments
   end
@@ -71,6 +71,11 @@ class TopicsController < ApplicationController
     render action: "index"
   end
 
+  def comment
+    @topics = Topic.joins(:comments).includes(:comments).order("comments.created_at DESC")
+    render action: "index"
+  end
+
 
   private
 
@@ -80,6 +85,10 @@ class TopicsController < ApplicationController
 
   def set_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def set_attention
+    @attention = Topic.joins(:comments).includes(:comments).order("comments.created_at DESC").limit(4)
   end
 
 end

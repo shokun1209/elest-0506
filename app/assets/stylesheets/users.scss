@@ -1,3 +1,19 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.show-user-main{
+  display: flex;
+}
+.show-user-left{
+  width: 25vw;
+  background-color: gray;
+  height: 100vh;
+  text-align: center;
+}
+.show-user-image{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 5%;
+}

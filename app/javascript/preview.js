@@ -1,5 +1,5 @@
 
-document.addEventListener('turbolinks:load', function(){
+document.addEventListener('DOMContentLoaded', function(){
   if ( document.getElementById('topic_image')){
     const ImageList = document.getElementById("image-list");
     document.getElementById("topic_image").addEventListener("change",function(e){

@@ -8,6 +8,7 @@
     <%= link_to "ガチャ", gacha_topics_path ,class:"side-category" %>
     <%= link_to "晒し", doxing_topics_path ,class:"side-category" %>
     <%= link_to "その他", other_topics_path ,class:"side-category" %>
+    <%= link_to "注目の記事", comment_topics_path ,class:"side-category" %>
     <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
     <%= form.text_field :keyword, placeholder: "タイトルで検索", class: "search-input" %>
     <%= form.submit "検索", class: "search-btn" %>
@@ -37,6 +38,27 @@
       <% end %>
     </div>
     <div class="main-right">
+    <div class="right-title">更新されたトピック</div>
+          <% @attention.each do |topics| %>
+        <%= link_to topic_path(topics.id) ,class:"attention-link" do %>
+          <div class="attention">
+            <%= topics.title %><br>
+            <div class="topics-date">
+              <div class="topics-category"><%= topics.category.name %></div>
+              <div class="index-user">
+                <% unless topics.anonymous == true %>
+                <%= image_tag topics.user.image_url, class:"topic-icon" %>
+                <%= time_ago_in_words(topics.created_at) %>前<br>
+                <%= topics.user.nickname %>
+                <% else %>
+                <%= time_ago_in_words(topics.created_at) %>前<br>
+                ID: <%= topics.user.public_uid %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

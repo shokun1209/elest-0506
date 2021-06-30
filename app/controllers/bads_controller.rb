@@ -2,8 +2,7 @@ class BadsController < ApplicationController
   before_action :set_topic
 
   def create
-    @bad = Bad.new(user_id: current_user.id, topic_id: params[:topic_id])
-    @bad.save
+    @bad = Bad.create(user_id: current_user.id, topic_id: params[:topic_id])
     redirect_to topic_path(@topic.id)
   end
 

@@ -1,6 +1,5 @@
-<% @topic = Topic.find(params[:id]) %>
-<% comments = @topic.comments %>
 
+<div class="idx">[<%= idx %>]</div>
 <% if comments.images.present? %>
   <div class="show-photo">
     <% comments.images.each do |image| %>

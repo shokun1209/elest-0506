@@ -1,1 +1,12 @@
-hello world!!
+<div class="show-user-main">
+  <div class="show-user-left">
+    <%= image_tag @user.image_url, class: "show-user-image" %><br>
+    <%= @user.nickname %><br>
+    <%= @user.public_uid %><br>
+  </div>
+  <div class="show-user-right">
+    <% @user.topics.each do |topics| %>
+      <%= link_to topics.title, topic_path(@topic) %><br>
+    <% end %>
+  </div>
+</div>
