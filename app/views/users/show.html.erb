@@ -13,13 +13,17 @@
     </div>
   </div>
   <div class="show-user-right">
-  <h1><%= current_user.nickname %>さんの投稿記事一覧</h1>
-    <% @topics.each do |topics| %>
-      <div class="user-topics">
-      <%= time_ago_in_words(@topic.created_at) %>前
-        <%= link_to topics.title, topic_path(topics), class:"user-topic" %>
-        　<i class="far fa-comment"></i><%= topics.comments.count %>件
-      </div>
+    <h1><%= current_user.nickname %>さんの投稿記事一覧</h1>
+    <% if @topics.present? %>
+      <% @topics.each do |topics| %>
+        <div class="user-topics">
+        <%= time_ago_in_words(@topic.created_at) %>前
+          <%= link_to topics.title, topic_path(topics), class:"user-topic" %>
+          　<i class="far fa-comment"></i><%= topics.comments.count %>件
+        </div>
+      <% end %>
+    <% else %>
+      投稿はまだありません。
     <% end %>
   </div>
 </div>

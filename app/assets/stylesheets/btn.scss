@@ -92,23 +92,23 @@
   background-blend-mode:lighten;
 }
 .arena:hover::after {
-  background-image: url("arena.jpg");
+  background-image: image-url("arena.jpg");
 }
 .gran:hover::after {
-  background-image: url("gran.jpg");
+  background-image: image-url("gran.jpg");
 }
 .event:hover::after {
-  background-image: url("event.jpg");
+  background-image: image-url("event.jpg");
 }
 .gacha:hover::after {
-  background-image: url("gacha.jpg");
+  background-image: image-url("gacha.jpg");
 }
 .doxing:hover::after {
-  background-image: url("doxing.jpg");
+  background-image: image-url("doxing.jpg");
 }
 .team:hover::after{
-  background-image: url("team.jpg");
+  background-image: image-url("team.jpg");
 }
 .other:hover::after {
-  background-image: url("other.jpg");
+  background-image: image-url("other.jpg");
 }
