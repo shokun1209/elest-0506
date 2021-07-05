@@ -1,0 +1,27 @@
+<div class="topics-date">
+  <% if topics.category_id == 2 %>
+  <div class="topics-category arena"><%= topics.category.name %></div>
+  <% elsif topics.category_id == 3 %>
+  <div class="topics-category gran"><%= topics.category.name %></div>
+  <% elsif topics.category_id == 4 %>
+  <div class="topics-category event"><%= topics.category.name %></div>
+  <% elsif topics.category_id == 5 %>
+  <div class="topics-category gacha"><%= topics.category.name %></div>
+  <% elsif topics.category_id == 6 %>
+  <div class="topics-category doxing"><%= topics.category.name %></div>
+  <% elsif topics.category_id == 7 %>
+  <div class="topics-category team"><%= topics.category.name %></div>
+  <% else %>
+  <div class="topics-category other"><%= topics.category.name %></div>
+  <% end %>
+  <div class="index-user">
+    <% unless topics.anonymous == true %>
+    <%= image_tag topics.user.image_url, class:"topic-icon" %>
+    <%= time_ago_in_words(topics.created_at) %>前<br>
+    <%= topics.user.nickname %>
+    <% else %>
+    <%= time_ago_in_words(topics.created_at) %>前<br>
+    ID: <%= topics.user.public_uid %>
+    <% end %>
+  </div>
+</div>

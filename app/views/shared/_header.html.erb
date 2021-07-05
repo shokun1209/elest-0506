@@ -12,12 +12,28 @@
     <% end %>
   </div>
   <div class="header-right">
+      <%= link_to root_path, class:"header-content" do %>
+      <div class="header-text">home</div>
+      <i class="fas fa-home"></i>
+      <% end %>
     <% unless user_signed_in? %>
-      <%= link_to "新規登録", new_user_registration_path, class:"header-content" %>
-      <%= link_to "ログイン", new_user_session_path, class:"header-content" %>
+      <%= link_to new_user_session_path, class:"header-content" do %>
+      <div class="header-text">sign in</div>
+      <i class="fas fa-sign-in-alt"></i>
+      <% end %>
+      <%= link_to new_user_registration_path, class:"header-content" do %>
+      <div class="header-text">sign up</div>
+      <i class="fas fa-power-off"></i>
+      <% end %>
     <% else %>
-      <%= link_to "新規投稿", new_topic_path, class:"header-content" %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'},class:"header-content" %>
+      <%= link_to new_topic_path, class:"header-content" do %>
+      <div class="header-text">new post</div>
+      <i class="fas fa-comment-alt"></i>
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'},class:"header-content" do %>
+      <div class="header-text">sign out</div>
+      <i class="fas fa-sign-out-alt"></i>
+      <% end %>
     <% end %>
   </div>
 </div>

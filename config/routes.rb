@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       get 'doxing'
       get 'team'
       get 'other'
-      get 'comment'
       get 'search_self'
     end
     resources :likes, only: [:create, :destroy]

@@ -1,0 +1,114 @@
+
+.arena::before,
+.arena::after,
+.gran::before,
+.gran::after, 
+.event::before,
+.event::after,
+.gacha::before,
+.gacha::after,
+.doxing::before,
+.doxing::after,
+.team::before,
+.team::after,
+.other::before,
+.other::after{
+  position: absolute;
+  z-index: -1;
+  // display: block;
+  content: '';
+}
+.arena,
+.arena::before,
+.arena::after,
+.gran,
+.gran::before,
+.gran::after,
+.event,
+.event::before,
+.event::after,
+.gacha,
+.gacha::before,
+.gacha::after,
+.doxing,
+.doxing::before,
+.doxing::after,
+.team,
+.team::before,
+.team::after,
+.other,
+.other::before,
+.other::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.arena,
+.gran,
+.event,
+.gacha,
+.doxing,
+.team,
+.other {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.arena:hover,
+.gran:hover,
+.event:hover,
+.gacha:hover,
+.doxing:hover,
+.team:hover,
+.other:hover {
+  color: rgba(0, 0, 0, 0);
+  border: whitesmoke solid 2px;
+}
+.arena::after,
+.gran::after,
+.event::after,
+.gacha::after,
+.doxing::after,
+.team::after,
+.other::after {
+  top: 0%;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+}
+.arena:hover::after,
+.gran:hover::after,
+.event:hover::after,
+.gacha:hover::after,
+.doxing:hover::after,
+.team:hover::after,
+.other:hover::after {
+  left: 0;
+  background-size: cover;
+  background-color:rgba(255, 255, 255, 0.2);
+  background-blend-mode:lighten;
+}
+.arena:hover::after {
+  background-image: url("arena.jpg");
+}
+.gran:hover::after {
+  background-image: url("gran.jpg");
+}
+.event:hover::after {
+  background-image: url("event.jpg");
+}
+.gacha:hover::after {
+  background-image: url("gacha.jpg");
+}
+.doxing:hover::after {
+  background-image: url("doxing.jpg");
+}
+.team:hover::after{
+  background-image: url("team.jpg");
+}
+.other:hover::after {
+  background-image: url("other.jpg");
+}

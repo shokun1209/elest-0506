@@ -1,12 +1,25 @@
 <div class="show-user-main">
   <div class="show-user-left">
-    <%= image_tag @user.image_url, class: "show-user-image" %><br>
-    <%= @user.nickname %><br>
-    <%= @user.public_uid %><br>
+    <div class="user-date">
+      <%= image_tag @user.image_url, class: "show-user-image" %><br>
+      ニックネーム：<%= @user.nickname %><br>
+      匿名時のID：<%= @user.public_uid %><br>
+    </div>
+    <div class="user-topics-date">
+      投稿したトピック数：<%= current_user.topics.count %><br>
+      コメントした数：<%= current_user.comments.count %><br>
+      Goodボタンを押した数：<%= current_user.likes.count %><br>
+      Badボタンを押した数： <%= current_user.bads.count %><br>
+    </div>
   </div>
   <div class="show-user-right">
-    <% @user.topics.each do |topics| %>
-      <%= link_to topics.title, topic_path(@topic) %><br>
+  <h1><%= current_user.nickname %>さんの投稿記事一覧</h1>
+    <% @topics.each do |topics| %>
+      <div class="user-topics">
+      <%= time_ago_in_words(@topic.created_at) %>前
+        <%= link_to topics.title, topic_path(topics), class:"user-topic" %>
+        　<i class="far fa-comment"></i><%= topics.comments.count %>件
+      </div>
     <% end %>
   </div>
 </div>

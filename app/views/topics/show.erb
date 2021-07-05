@@ -1,4 +1,4 @@
-
+<%= render "shared/header" %>
 <div class="show-all">
   <div class="show-main">
       <div class="topic-title"><strong><%= @topic.title %></strong></div>
@@ -22,8 +22,8 @@
             <% end %>
           </div>
           <div class="topic-user">
-              <%= render 'likes/like' %>
-              <%= render 'bads/bad' %>
+              <%= render partial: 'likes/like' %>
+              <%= render partial: 'bads/bad' %>
             <% unless @topic.anonymous == true %>
               <%= image_tag @topic.user.image_url, class:"topic-icon" %>
               <div class="date">

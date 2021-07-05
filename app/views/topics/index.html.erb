@@ -2,16 +2,19 @@
 
 <div class="all">
   <div class="side">
-    <%= link_to "アリーナ", arena_topics_path ,class:"side-category" %>
-    <%= link_to "グランバトル", gran_topics_path ,class:"side-category" %>
-    <%= link_to "イベント", event_topics_path ,class:"side-category" %>
-    <%= link_to "ガチャ", gacha_topics_path ,class:"side-category" %>
-    <%= link_to "晒し", doxing_topics_path ,class:"side-category" %>
-    <%= link_to "その他", other_topics_path ,class:"side-category" %>
-    <%= link_to "注目の記事", comment_topics_path ,class:"side-category" %>
+    <%= link_to "アリーナ", arena_topics_path ,class:"side-category arena" %>
+    <%= link_to "グランバトル", gran_topics_path ,class:"side-category gran" %>
+    <%= link_to "イベント", event_topics_path ,class:"side-category event" %>
+    <%= link_to "ガチャ", gacha_topics_path ,class:"side-category gacha" %>
+    <%= link_to "晒し", doxing_topics_path ,class:"side-category doxing" %>
+    <%= link_to "チーム募集", team_topics_path ,class:"side-category team" %>
+    <%= link_to "その他", other_topics_path ,class:"side-category other" %>
+
     <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "タイトルで検索", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
+      <%= form.text_field :keyword, placeholder: "タイトルで検索", class: "search-input" %>
+      <%= button_tag type:'submit', class: "search-btn" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
     <% end %>
   </div>
   <div class="main">
@@ -20,42 +23,18 @@
         <%= link_to topic_path(topics.id) ,class:"topic-link" do %>
           <div class="topics">
             <%= topics.title %><br>
-            <div class="topics-date">
-              <div class="topics-category"><%= topics.category.name %></div>
-              <div class="index-user">
-                <% unless topics.anonymous == true %>
-                <%= image_tag topics.user.image_url, class:"topic-icon" %>
-                <%= time_ago_in_words(topics.created_at) %>前<br>
-                <%= topics.user.nickname %>
-                <% else %>
-                <%= time_ago_in_words(topics.created_at) %>前<br>
-                ID: <%= topics.user.public_uid %>
-                <% end %>
-              </div>
-            </div>
+            <%= render partial: 'shared/topics_date', locals: { topics: topics } %>
           </div>
         <% end %>
       <% end %>
     </div>
     <div class="main-right">
     <div class="right-title">更新されたトピック</div>
-          <% @attention.each do |topics| %>
+      <% @attention.each do |topics| %>
         <%= link_to topic_path(topics.id) ,class:"attention-link" do %>
           <div class="attention">
             <%= topics.title %><br>
-            <div class="topics-date">
-              <div class="topics-category"><%= topics.category.name %></div>
-              <div class="index-user">
-                <% unless topics.anonymous == true %>
-                <%= image_tag topics.user.image_url, class:"topic-icon" %>
-                <%= time_ago_in_words(topics.created_at) %>前<br>
-                <%= topics.user.nickname %>
-                <% else %>
-                <%= time_ago_in_words(topics.created_at) %>前<br>
-                ID: <%= topics.user.public_uid %>
-                <% end %>
-              </div>
-            </div>
+            <%= render partial: 'shared/topics_date', locals: { topics: topics } %>
           </div>
         <% end %>
       <% end %>

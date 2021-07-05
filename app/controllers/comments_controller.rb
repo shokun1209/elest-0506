@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to topic_path(params[:topic_id])
     else
+      @comments = @topic.comments
       render "topics/show"
     end
   end

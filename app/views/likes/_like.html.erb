@@ -1,9 +1,9 @@
-<% if user_signed_in? && current_user.liked_by?(@topic) %>
+<% if user_signed_in? && current_user.liked_by?(@topic) && current_user.id != @topic.user_id %>
   <%= link_to topic_like_path(@topic), method: :DELETE, class:"good_after" do %>
     <%= image_tag 'good1.png', class:"good_icon" %>
     <%= @topic.likes.count %>
   <% end %>
-<% elsif user_signed_in? && !current_user.hated_by?(@topic) %>
+<% elsif user_signed_in? && !current_user.hated_by?(@topic) && current_user.id != @topic.user_id %>
   <%= link_to topic_likes_path(@topic), method: :POST, class:"good_before" do %>
     <%= image_tag 'good.png', class:"good_icon" %>
     <%= @topic.likes.count %>

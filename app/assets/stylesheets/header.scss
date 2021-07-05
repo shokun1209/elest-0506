@@ -1,7 +1,8 @@
 .header {
   background-color: black;
-  height: 120px;
-  position: relative;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
 }
 .header-left{
   width: 20vw;
@@ -11,20 +12,34 @@
   align-items: center;
 }
 .header-right {
-  bottom: 0px;
-  right: 0px;
-  position: absolute;
+  width: 80vw;
   display: flex;
+  justify-content: space-around;
 }
 .header-content{
-  padding: 20px;
-  background-color: antiquewhite;
-  margin: 30px;
-  color: gray;
+  padding: 5px;
+  color: whitesmoke;
   text-decoration: none;
+  font-size: 50px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 33.3%;
+  transition: 0.2s;
+}
+.header-content:hover{
+  color:black;
+  background-color: whitesmoke;
+}
+.scroll:active{
+  background-color: black;
+  color: whitesmoke;
+}
+.header-text{
+  font-size: 15px;
+  margin: 5px 0;
 }
 .current-user{
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   box-sizing: border-box;
   color: white;
@@ -34,8 +49,14 @@
   color: white;
 }
 .header-icon{
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: white solid 3px;
+  transition: 0.2s;
+}
+.header-link:hover{
+  .header-icon{
+    border: yellow solid 3px;
+  }
 }
