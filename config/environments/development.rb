@@ -70,4 +70,5 @@ Rails.application.configure do
     password: Rails.application.credentials.gmail[:password],
     :authentication => 'login',
   }
+  
 end
