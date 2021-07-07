@@ -6,10 +6,10 @@
       匿名時のID：<%= @user.public_uid %><br>
     </div>
     <div class="user-topics-date">
-      投稿したトピック数：<%= current_user.topics.count %><br>
-      コメントした数：<%= current_user.comments.count %><br>
-      Goodボタンを押した数：<%= current_user.likes.count %><br>
-      Badボタンを押した数： <%= current_user.bads.count %><br>
+      投稿したトピック数：<%= current_user.topics.count %>件<br>
+      コメントした数：<%= current_user.comments.count %>回<br>
+      Goodボタンを押した数：<%= current_user.likes.count %>回<br>
+      Badボタンを押した数： <%= current_user.bads.count %>回<br>
     </div>
   </div>
   <div class="show-user-right">
@@ -23,7 +23,7 @@
         </div>
       <% end %>
     <% else %>
-      投稿はまだありません。
+      投稿したトピックはまだありません。
     <% end %>
   </div>
 </div>

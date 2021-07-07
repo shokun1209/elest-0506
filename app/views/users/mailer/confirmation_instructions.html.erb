@@ -1,0 +1,5 @@
+<p><%= @nickname %>さん、本アプリのご利用ありがとうございます!!</p>
+
+<p>下記のリンクをクリックしてログインを行ってください。</p>
+
+<p><%= link_to 'クリックしてユーザー登録を完了する', confirmation_url(@resource, confirmation_token: @token) %></p>
