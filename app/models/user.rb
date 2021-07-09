@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
          generate_public_uid
          mount_uploader :image, ImageUploader
-         has_many :topics
-         has_many :comments
+         has_many :topics, dependent: :destroy
+         has_many :comments, dependent: :destroy
          has_many :likes, dependent: :destroy
          has_many :liked_topics, through: :likes, source: :topic
          def liked_by?(topic_id)
