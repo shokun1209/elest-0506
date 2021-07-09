@@ -74,3 +74,4 @@ gem 'pry-rails'
 gem 'rails-i18n'
 gem 'jquery-turbolinks'
 gem 'devise-i18n'
+gem "aws-sdk-s3", require: false
