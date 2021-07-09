@@ -18,7 +18,11 @@
 </div>
   <div class="topic-date">
     <% unless comments.anonymous == true %>
-      <%= image_tag comments.user.image_url, class:"topic-icon" %>
+      <% if comments.user.image.present? %>
+        <%= image_tag comments.user.image_url, class:"topic-icon" %>
+      <% else %>
+        <%= image_tag 'icon.png', class:"topic-icon" %>
+      <% end %>
       <div class="date">
         <%= time_ago_in_words(comments.created_at) %>前<br>
         <%= comments.user.nickname %>

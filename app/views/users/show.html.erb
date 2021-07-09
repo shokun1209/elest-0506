@@ -1,9 +1,13 @@
 <div class="show-user-main">
   <div class="show-user-left">
     <div class="user-date">
-      <%= image_tag @user.image_url, class: "show-user-image" %><br>
-      ニックネーム：<%= @user.nickname %><br>
-      匿名時のID：<%= @user.public_uid %><br>
+      <% if current_user.image.present? %>
+        <%= image_tag current_user.image_url, class: "show-user-image" %><br>
+      <% else %>
+        <%= image_tag "icon.png", class: "show-user-image" %><br>
+      <% end %>
+      ニックネーム：<%= current_user.nickname %><br>
+      匿名時のID：<%= current_user.public_uid %><br>
     </div>
     <div class="user-topics-date">
       投稿したトピック数：<%= current_user.topics.count %>件<br>

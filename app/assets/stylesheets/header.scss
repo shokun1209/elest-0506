@@ -57,6 +57,7 @@
 }
 .header-link:hover{
   .header-icon{
-    border: yellow solid 3px;
+    // border: rgb(255, 154, 120) solid 3px;
+    transform: scale(1.2);
   }
 }

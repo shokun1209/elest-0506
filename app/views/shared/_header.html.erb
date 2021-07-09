@@ -4,7 +4,11 @@
     <% if user_signed_in? %>
       <div class="current-user">
         <%= link_to user_path(current_user.id), class:"header-link" do %>
-          <%= image_tag current_user.image_url, class:"header-icon" %>
+          <% if current_user.image.present? %>
+            <%= image_tag current_user.image_url, class:"header-icon" %>
+          <% else %>
+            <%= image_tag 'icon.png', class: "header-icon" %>
+          <% end %>
           <p><%= current_user.nickname %></p>
           <p>ID: <%= current_user.public_uid %></p>
         <% end %>

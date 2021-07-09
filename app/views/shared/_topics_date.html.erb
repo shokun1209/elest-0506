@@ -16,12 +16,16 @@
   <% end %>
   <div class="index-user">
     <% unless topics.anonymous == true %>
-    <%= image_tag topics.user.image_url, class:"topic-icon" %>
-    <%= time_ago_in_words(topics.created_at) %>前<br>
-    <%= topics.user.nickname %>
-    <% else %>
-    <%= time_ago_in_words(topics.created_at) %>前<br>
-    ID: <%= topics.user.public_uid %>
+      <% if topics.user.image.present? %>
+        <%= image_tag topics.user.image_url, class:"topic-icon" %>
+      <% else %>
+        <%= image_tag "icon2.png", class:"topic-icon" %>
+      <% end %>
+      <%= time_ago_in_words(topics.created_at) %>前<br>
+      <%= topics.user.nickname %>
+      <% else %>
+      <%= time_ago_in_words(topics.created_at) %>前<br>
+      ID: <%= topics.user.public_uid %>
     <% end %>
   </div>
 </div>

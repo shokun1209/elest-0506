@@ -25,7 +25,11 @@
               <%= render partial: 'likes/like' %>
               <%= render partial: 'bads/bad' %>
             <% unless @topic.anonymous == true %>
-              <%= image_tag @topic.user.image_url, class:"topic-icon" %>
+              <% if @topic.user.image.present? %>
+                <%= image_tag @topic.user.image_url, class:"topic-icon" %>
+              <% else %>
+                <%= image_tag "icon2.png", class:"topic-icon" %>
+              <% end %>
               <div class="date">
                 <%= time_ago_in_words(@topic.created_at) %>前<br>
                 <%= @topic.user.nickname %>
