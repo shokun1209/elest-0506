@@ -15,7 +15,7 @@ set :rbenv_ruby, '2.6.5' #rubyのバージョン
 
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
-keys: ['~/.ssh/shokun.pem'] 
+keys: ['~/.ssh/elest0506.pem'] 
 
 # プロセス番号を記載したファイルの場所
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
@@ -30,4 +30,12 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
+
+  set :default_env, {
+    rbenv_root: "/home/user/.rbenv",
+    path: "/home/user/.rbenv/bin:$PATH",
+    aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    region: 'ap-northeast-1'
+  }
 end
