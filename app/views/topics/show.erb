@@ -2,6 +2,8 @@
 <div class="show-all">
   <div class="show-main">
       <div class="topic-title"><strong><%= @topic.title %></strong></div>
+    <div class="show-topic-comments">
+      <div class="show-topic">
     <% if @topic.images.present? %>
       <div class="show-photo">
         <% @topic.images.each do |image| %>
@@ -11,14 +13,12 @@
         <% end %>
       </div>
     <% end %>
-    <div class="show-topic-comments">
-      <div class="show-topic">
         <div class="topic-category"><%= @topic.category.name %></div>
         <div class="topic-text"><%= @topic.text %></div>
         <div class="topic-bottom">
           <div class="topic-delete">
             <% if user_signed_in? && @topic.user_id == current_user.id %>
-              <%= link_to "トピックを削除する", topic_path(@topic.id), method: :delete, data: {confirm: '一度削除すると復旧はできません。 本当に削除しますか？'}, class:"date" %>
+              <%= link_to "トピックを削除", topic_path(@topic.id), method: :delete, data: {confirm: '一度削除すると復旧はできません。 本当に削除しますか？'}, class:"date" %>
             <% end %>
           </div>
           <div class="topic-user">

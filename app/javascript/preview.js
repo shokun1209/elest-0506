@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function(){
     const ImageList = document.getElementById("image-list");
     document.getElementById("topic_image").addEventListener("change",function(e){
 
+      const previewText = document.getElementById("previews-text");
+      alert("preview-textを取得できました")
+      // previewText.style.display="none";
+      
       // 既にプレビューが表示されている場合、プレビューを削除
       const imageContents = document.querySelectorAll('#currentThumb');
       const count = imageContents.length;
@@ -17,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
       const file = e.target.files;
       const num = file.length;
       
+      
       for (let i = 0 ; i < num ; i++ ){
         const blob = window.URL.createObjectURL(file[i]);
         if (num > 4){
@@ -29,14 +34,13 @@ document.addEventListener('DOMContentLoaded', function(){
         imageElement.id = "currentThumb"
         
         // 表示する画像を生成
-        const blobImage = document.createElement('img');
+        const blobImage = document.createElement('img','class','img');
         blobImage.setAttribute('src', blob);
-        blobImage.height = 100;
-        blobImage.width = 80;
         
         // 生成したHTMLの要素をブラウザに表示させる
         imageElement.appendChild(blobImage);
         ImageList.appendChild(imageElement);
+
       };
     });
   };

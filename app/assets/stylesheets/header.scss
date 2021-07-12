@@ -1,8 +1,9 @@
 .header {
   background-color: black;
-  height: 100px;
+  height: 10%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .header-left{
   width: 20vw;
@@ -10,18 +11,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
 }
 .header-right {
   width: 80vw;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
 .header-content{
-  padding: 5px;
+  height: 100px;
   color: whitesmoke;
   text-decoration: none;
   font-size: 50px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   width: 33.3%;
   transition: 0.2s;
@@ -30,19 +36,24 @@
   color:black;
   background-color: whitesmoke;
 }
+.links{
+  box-sizing: border-box;
+  text-align: center;
+}
 .scroll:active{
   background-color: black;
   color: whitesmoke;
 }
 .header-text{
   font-size: 15px;
-  margin: 5px 0;
+  box-sizing: border-box;
 }
 .current-user{
-  font-size: 12px;
   text-align: center;
   box-sizing: border-box;
   color: white;
+  height: 100%;
+  padding-top: 5px;
 }
 .header-link{
   text-decoration: none;
@@ -57,7 +68,40 @@
 }
 .header-link:hover{
   .header-icon{
-    // border: rgb(255, 154, 120) solid 3px;
     transform: scale(1.2);
+  }
+}
+
+
+@media screen and (max-width: 599px) {
+  .header {
+    height: 10vh;
+  }
+  .header-left{
+    width: 25vw;
+    font-size: 10px;
+  }
+  .header-content{
+    font-size: 30px;
+    height: 100%;
+  }
+  .header-text{
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
+  .header-icon{
+    width: 40px;
+    height: 40px;
+  }
+  .current-user{
+    text-align: center;
+    box-sizing: border-box;
+    color: white;
+  }
+}
+
+@media screen and (max-height: 660px) {
+  .user-date{
+    display: none;
   }
 }

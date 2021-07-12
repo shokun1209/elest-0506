@@ -7,36 +7,46 @@
           <% if current_user.image.present? %>
             <%= image_tag current_user.image_url, class:"header-icon" %>
           <% else %>
-            <%= image_tag 'icon.png', class: "header-icon" %>
+            <%= image_tag 'icon.png', class: "header-icon" %><br>
           <% end %>
-          <p><%= current_user.nickname %></p>
-          <p>ID: <%= current_user.public_uid %></p>
+          <div class="user-date"><%= current_user.nickname %><br>
+          ID: <%= current_user.public_uid %></div>
         <% end %>
       </div>
     <% end %>
   </div>
   <div class="header-right">
-      <%= link_to root_path, class:"header-content" do %>
-      <div class="header-text">home</div>
-      <i class="fas fa-home"></i>
-      <% end %>
+    <%= link_to root_path, class:"header-content" do %>
+      <div class="links">
+        <div class="header-text">home</div>
+        <i class="fas fa-home"></i>
+      </div>
+    <% end %>
     <% unless user_signed_in? %>
       <%= link_to new_user_session_path, class:"header-content" do %>
-      <div class="header-text">sign in</div>
-      <i class="fas fa-sign-in-alt"></i>
+        <div class="links">
+          <div class="header-text">sign in</div>
+          <i class="fas fa-sign-in-alt"></i>
+        </div>
       <% end %>
       <%= link_to new_user_registration_path, class:"header-content" do %>
-      <div class="header-text">sign up</div>
-      <i class="fas fa-power-off"></i>
+        <div class="links">
+          <div class="header-text">sign up</div>
+          <i class="fas fa-power-off"></i>
+        </div>
       <% end %>
     <% else %>
       <%= link_to new_topic_path, class:"header-content" do %>
-      <div class="header-text">new post</div>
-      <i class="fas fa-comment-alt"></i>
+        <div class="links">
+          <div class="header-text">new post</div>
+          <i class="fas fa-comment-alt"></i>
+        </div>
       <% end %>
       <%= link_to destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'},class:"header-content" do %>
-      <div class="header-text">sign out</div>
-      <i class="fas fa-sign-out-alt"></i>
+        <div class="links">
+          <div class="header-text">sign out</div>
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
       <% end %>
     <% end %>
   </div>
