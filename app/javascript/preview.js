@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function(){
     const ImageList = document.getElementById("image-list");
     document.getElementById("topic_image").addEventListener("change",function(e){
 
-      const previewText = document.getElementById("previews-text");
-      alert("preview-textを取得できました")
+      // const previewText = document.getElementById("previews-text");
+      // alert("preview-textを取得できました")
       // previewText.style.display="none";
       
       // 既にプレビューが表示されている場合、プレビューを削除

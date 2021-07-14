@@ -9,7 +9,7 @@
     <% end %>
   </div>
 <% end %>
-<%= comments.comment %><br>
+<%= safe_join(comments.comment.split("\n"),tag(:br)) %>
 <div class="comment-user">
 <div class="date">
   <% if user_signed_in? && comments.user_id == current_user.id %>
@@ -21,7 +21,7 @@
       <% if comments.user.image.present? %>
         <%= image_tag comments.user.image_url, class:"topic-icon" %>
       <% else %>
-        <%= image_tag 'icon.png', class:"topic-icon" %>
+        <%= image_tag 'icon2.png', class:"topic-icon" %>
       <% end %>
       <div class="date">
         <%= time_ago_in_words(comments.created_at) %>前<br>

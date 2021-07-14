@@ -1,23 +1,23 @@
 <div class="show-user-main">
   <div class="show-user-left">
     <div class="user-date">
-      <% if current_user.image.present? %>
-        <%= image_tag current_user.image_url, class: "show-user-image" %><br>
+      <% if @user.image.present? %>
+        <%= image_tag @user.image_url, class: "show-user-image" %><br>
       <% else %>
         <%= image_tag "icon.png", class: "show-user-image" %><br>
       <% end %>
-      ニックネーム：<%= current_user.nickname %><br>
-      匿名時のID：<%= current_user.public_uid %><br>
+      ニックネーム：<%= @user.nickname %><br>
+      匿名時のID：<%= @user.public_uid %><br>
     </div>
     <div class="user-topics-date">
-      投稿したトピック数：<%= current_user.topics.count %>件<br>
-      コメントした数：<%= current_user.comments.count %>回<br>
-      Goodボタンを押した数：<%= current_user.likes.count %>回<br>
-      Badボタンを押した数： <%= current_user.bads.count %>回<br>
+      投稿したトピック数：<%= @user.topics.count %>件<br>
+      コメントした数：<%= @user.comments.count %>回<br>
+      Goodボタンを押した数：<%= @user.likes.count %>回<br>
+      Badボタンを押した数： <%= @user.bads.count %>回<br>
     </div>
   </div>
   <div class="show-user-right">
-    <h1><%= current_user.nickname %>さんの投稿記事一覧</h1>
+    <h1><%= @user.nickname %>さんの投稿記事一覧</h1>
     <% if @topics.present? %>
       <% @topics.each do |topics| %>
         <div class="user-topics">

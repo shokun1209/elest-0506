@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_topic, only: [:create,:destroy]
+  before_action :set_validates, only: [:create, :destroy]
+
 
   def create
     @comment = Comment.create(comment_params)
@@ -13,8 +15,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find_by(id: params[:id],topic_id: params[:topic_id])
-    @comment.destroy
-    redirect_to topic_path(@topic.id)
+    if current_user.id == @comment.user_id
+      @comment.destroy
+      redirect_to topic_path(@topic.id)
+    else
+      render "topics/show"
+    end
   end
 
   private
@@ -25,5 +31,11 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment,:type_id,:anonymous,{images: []}).merge(topic_id: params[:topic_id],user_id: current_user.id)
+  end
+
+  def set_validates
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 end

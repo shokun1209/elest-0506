@@ -4,17 +4,17 @@
       <div class="topic-title"><strong><%= @topic.title %></strong></div>
     <div class="show-topic-comments">
       <div class="show-topic">
-    <% if @topic.images.present? %>
-      <div class="show-photo">
-        <% @topic.images.each do |image| %>
-          <%= link_to image.url, 'data-lightbox': image do %>
-            <%= image_tag image.url, height:"150px", width:"150px" ,class:"topic-image" %>
-          <% end %>
+        <% if @topic.images.present? %>
+          <div class="show-photo">
+            <% @topic.images.each do |image| %>
+              <%= link_to image.url, 'data-lightbox': image do %>
+                <%= image_tag image.url, height:"150px", width:"150px" ,class:"topic-image" %>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-    <% end %>
         <div class="topic-category"><%= @topic.category.name %></div>
-        <div class="topic-text"><%= @topic.text %></div>
+        <div class="topic-text"><%= safe_join(@topic.text.split("\n"),tag(:br)) %></div>
         <div class="topic-bottom">
           <div class="topic-delete">
             <% if user_signed_in? && @topic.user_id == current_user.id %>
@@ -22,8 +22,8 @@
             <% end %>
           </div>
           <div class="topic-user">
-              <%= render partial: 'likes/like' %>
-              <%= render partial: 'bads/bad' %>
+            <%= render partial: 'likes/like' %>
+            <%= render partial: 'bads/bad' %>
             <% unless @topic.anonymous == true %>
               <% if @topic.user.image.present? %>
                 <%= image_tag @topic.user.image_url, class:"topic-icon" %>
@@ -45,25 +45,27 @@
       </div>
     </div>
     <div class="comment-main">
-      <div class="comments">
-        <% if @comments.present? %>
-          <% @comments.each.with_index(1) do |comments, idx| %>
-            <% if comments.type_id == 3 %>
-              <div class="comment1">
+      <% if @comments.present? %>
+        <% @comments.each.with_index(1) do |comments, idx| %>
+          <% if comments.type_id == 3 %>
+            <div class="comment1">
+              <div class="left">
                 <%= render partial: 'comments/comment', locals: { comments: comments, idx: idx } %>
               </div>
-            <% else %>
-              <div class="comment2">
+            </div>
+          <% else %>
+            <div class="comment2">
+              <div class="right">
                 <%= render partial: 'comments/comment', locals: { comments: comments, idx: idx } %>
               </div>
-            <% end %>
+            </div>
           <% end %>
-        <% else %>
-        <div class="comment-none">
-        この投稿にはまだコメントがありません。
-        </div>
         <% end %>
+      <% else %>
+      <div class="comment-none">
+      この投稿にはまだコメントがありません。
       </div>
+      <% end %>
     </div>
     <div class="comment-form-main">
       <% if user_signed_in? %>
@@ -71,7 +73,7 @@
           <%= form_with(model: [@topic,@comment],local: true) do |f| %>
             <%= render 'shared/error', model: f.object %>
             <label>
-            <%= f.file_field :images, multiple: true, id: :topic_image, data: {"turbolinks"=>false}, class:"f-file" %>
+            <%= f.file_field :images, multiple: true, required: false, id: :topic_image, class:"f-file" %>
             <div class="previews" id="image-list">
               画像を選択<br>
               (最大4枚)

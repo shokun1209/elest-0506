@@ -239,10 +239,10 @@
 }
 .show-topic{
   margin-top: 30px;
-  width: 80%;
+  width: 70%;
   padding: 15px 15px 5px 15px;
-  background-color:rgba(255, 255, 255, 0.85);
-  border: solid 2px black;
+  background-color: whitesmoke;
+  border: solid 3px #555;
   border-radius: 10px;
 }
 .show-photo{
@@ -253,8 +253,8 @@
 .topic-image{
   border: black solid 1px;
   margin: 5px 5px 0px 5px;
-  height: 200px;
-  width: calc((90% - 40px) / 4);
+  height: 120px;
+  width: calc(100% / 7);
 }
 .topic-category{
   margin: 20px 0px;
@@ -287,8 +287,8 @@
   right: 10px;
 }
 .topic-icon{
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   border: black solid 1px;
   margin-right: 5px;
@@ -359,28 +359,80 @@
   background-color:rgba(255, 255, 255, 0.85);
 }
 .comment-main{
-  display: flex;
-  justify-content: center;
   width: 100%;
 }
-.comments{
-  width: 80%;
-}
 .comment1{
-  margin: 30px 0 0 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.left{
+  margin: 5% 0 0 10% ;
   padding: 15px 15px 5px 15px;
-  background-color:rgba(255, 230, 230, 0.85);
-  border:black solid 1px;
-  border-radius: 10px;
+  background-color:rgb(255, 230, 230);
+  color: rgb(60, 60, 60);
+  border: solid 3px #555;
+  border-radius: 20px;
   box-sizing: border-box;
+  width: 70%;
+  position: relative;
+  display: inline-block;
+}
+.left:before {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid rgb(255, 230, 230);
+  z-index: 2;
+}
+.left:after {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  z-index: 1;
 }
 .comment2{
-  margin: 30px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.right{
+  margin: 5% 10% 0 0 ;
   padding: 15px 15px 5px 15px;
-  background-color:rgba(210, 245, 255, 0.85);
-  border:black solid 1px;
-  border-radius: 10px;
+  background-color:rgb(210, 245, 255);
+  color: rgb(60, 60, 60);
+  border: solid 3px #555;
+  border-radius: 20px;
   box-sizing: border-box;
+  width: 70%;
+  position: relative;
+  display: inline-block;
+}
+.right:before {
+  content: "";
+  position: absolute;
+  top: 60%;
+  right: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-left: 12px solid rgb(210, 245, 255);
+  z-index: 2;
+}
+.right:after {
+  content: "";
+  position: absolute;
+  top: 60%;
+  right: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-left: 14px solid #555;
+  z-index: 1;
 }
 .comment-user{
   display: flex;
@@ -396,8 +448,9 @@
   background-color:rgba(255, 255, 255, 0.85);
   border-radius: 10px;
   margin-top: 100px;
-  width: 70%;
+  width: 50%;
   position: relative;
+  border: black solid 3px;
 }
 .f-comment-text{
   width: 100%;
@@ -450,10 +503,6 @@
   align-items: center;
   color: gray;
   border:gray solid 1px;
-}
-
-.topic-preview{
-  // border:gray solid 1px;
 }
 
 .description{
@@ -611,8 +660,9 @@ img{
     margin-bottom: 10px;
   }
   .topic-image{
-    height: 70px;
-    width: calc((90% - 40px) / 4);
+    height: 60px;
+    width: calc(80% / 4);
+    margin: 1%;
   }
   .topic-category{
     font-size: 12px;
@@ -625,6 +675,10 @@ img{
   }
   .topic-user{
     align-items: flex-end;
+  }
+  .topic-icon{
+    width: 30px;
+    height: 30px;
   }
   // ここから
 
@@ -674,22 +728,22 @@ img{
     background-color:rgba(255, 255, 255, 0.85);
   }
   .comment-main{
-    display: flex;
-    justify-content: center;
     width: 100%;
   }
-  .comments{
-    width: 100%;
-  }
-  .comment1{
-    margin: 5% 0 0 0;
+  .left{
     padding: 10px 10px 5px 10px;
     font-size: 14px;
+    width: 90%;
+    margin-left: 0;
   }
-  .comment2{
-    margin: 5% 0 0 0;
+  .right{
     padding: 10px 10px 5px 10px;
     font-size: 14px;
+    width: 90%;
+    margin-right: 0;
+  }
+  .idx{
+    margin-bottom: 5px;
   }
   .comment-user{
     display: flex;
@@ -734,7 +788,7 @@ img{
   .previews{
     height: 15vh;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 5%;
   }
   
@@ -785,9 +839,6 @@ img{
     width: 15px;
     height: 15px;
     text-decoration: none;
-  }
-  .idx{
-    margin-bottom: 10px;
   }
   .good{
     text-decoration: none;
