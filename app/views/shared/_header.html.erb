@@ -1,19 +1,7 @@
 
 <div class="header">
   <div class="header-left">
-    <% if user_signed_in? %>
-      <div class="current-user">
-        <%= link_to user_path(current_user.id), class:"header-link" do %>
-          <% if current_user.image.present? %>
-            <%= image_tag current_user.image_url, class:"header-icon" %>
-          <% else %>
-            <%= image_tag 'icon.png', class: "header-icon" %><br>
-          <% end %>
-          <div class="user-date"><%= current_user.nickname %><br>
-          ID: <%= current_user.public_uid %></div>
-        <% end %>
-      </div>
-    <% end %>
+  ロゴが入るよ
   </div>
   <div class="header-right">
     <%= link_to root_path, class:"header-content" do %>

@@ -1,22 +1,6 @@
-<%= render "shared/header" %>
-
 <div class="all">
-  <div class="side">
-    <%= link_to "アリーナ", arena_topics_path ,class:"side-category arena" %>
-    <%= link_to "グランバトル", gran_topics_path ,class:"side-category gran" %>
-    <%= link_to "イベント", event_topics_path ,class:"side-category event" %>
-    <%= link_to "ガチャ", gacha_topics_path ,class:"side-category gacha" %>
-    <%= link_to "晒し", doxing_topics_path ,class:"side-category doxing" %>
-    <%= link_to "チーム募集", team_topics_path ,class:"side-category team" %>
-    <%= link_to "その他", other_topics_path ,class:"side-category other" %>
-
-    <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "タイトルで検索", class: "search-input" %>
-      <%= button_tag type:'submit', class: "search-btn" do %>
-        <i class="fas fa-search"></i>
-      <% end %>
-    <% end %>
-  </div>
+<%= render "shared/side" %>
+<%= render "shared/header" %>
   <div class="main">
     <div class="main-left">
       <% @topics.each do |topics| %>
