@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get 'other'
       get 'search_self'
     end
-    resources :likes, only: [:create, :destroy]
-    resources :bads, only: [:create, :destroy]
+    resource :like, only: [:create, :destroy]
+    resource :bad, only: [:create, :destroy]
   end
 end

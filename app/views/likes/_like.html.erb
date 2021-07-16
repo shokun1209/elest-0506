@@ -4,7 +4,7 @@
     <%= @topic.likes.count %>
   <% end %>
 <% elsif user_signed_in? && !current_user.hated_by?(@topic) && current_user.id != @topic.user_id %>
-  <%= link_to topic_likes_path(@topic), method: :POST, class:"good_before" do %>
+  <%= link_to topic_like_path(@topic), method: :POST, class:"good_before" do %>
     <%= image_tag 'good.png', class:"good_icon" %>
     <%= @topic.likes.count %>
   <% end %>

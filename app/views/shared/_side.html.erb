@@ -20,7 +20,7 @@
       </div>
     <% end %>
     <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "タイトルで検索", class: "search-input" %>
+      <%= form.text_field :keyword, placeholder: "タイトルで検索", autocomplete: 'off', class: "search-input" %>
       <%= button_tag type:'submit', class: "search-btn" do %>
         <i class="fas fa-search"></i>
       <% end %>

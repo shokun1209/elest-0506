@@ -91,7 +91,7 @@ class TopicsController < ApplicationController
   end
 
   def set_attention
-    @attention = Topic.joins(:comments).order("comments.created_at DESC").limit(2)
+    @attention = Topic.joins(:comments).order("comments.created_at DESC").limit(2).includes(:user)
   end
 
   def set_validates
