@@ -4,6 +4,7 @@
 
 .show-user-main{
   display: flex;
+  background-color: whitesmoke;
 }
 .show-user-left{
   width: 25vw;
@@ -27,6 +28,7 @@
 .user-topic{
   color: black;
 }
+
 
 @media screen and (max-width: 599px) {
   .show-user-left{

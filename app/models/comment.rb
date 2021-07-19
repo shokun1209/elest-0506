@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
   serialize :images, JSON
   belongs_to :user
   belongs_to :topic
+  has_many :notifications, dependent: :destroy
 
   with_options presence: true do
     validates :comment, length: { maximum: 300 }

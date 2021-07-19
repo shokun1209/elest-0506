@@ -74,11 +74,6 @@ class TopicsController < ApplicationController
     render action: "index"
   end
 
-  # def comment
-  #   @topics = Topic.joins(:comments).includes(:comments).order("comments.created_at DESC")
-  #   render action: "index"
-  # end
-
 
   private
 

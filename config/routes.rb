@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     end
     resource :like, only: [:create, :destroy]
     resource :bad, only: [:create, :destroy]
+    resources :notifications, only: [:index, :destroy]
   end
 end

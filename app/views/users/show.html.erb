@@ -23,13 +23,26 @@
     <% if @topics.present? %>
       <% @topics.each do |topics| %>
         <div class="user-topics">
-        <%= time_ago_in_words(topics.created_at) %>前
           <%= link_to topics.title, topic_path(topics), class:"user-topic" %>
           　<i class="far fa-comment"></i><%= topics.comments.count %>件
+        (<%= time_ago_in_words(topics.created_at) %>前)
         </div>
       <% end %>
     <% else %>
       投稿したトピックはまだありません。
+    <% end %>
+    <h3 class="text-center">通知</h3>
+    <%= link_to "通知削除", topic_notification_path(@notifications), method: :delete %>
+    <% if @notifications.present? %>
+      <% @notifications.each do |notification| %>
+        <p><i class="fas fa-bell"></i><%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span></p>
+        <br>
+        <% if !@comment.nil? %>
+          <p class="notification-comment"><%= @comment %></p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>通知はありません</p>
     <% end %>
   </div>
 </div>

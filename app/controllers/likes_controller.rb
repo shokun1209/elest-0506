@@ -7,6 +7,7 @@ class LikesController < ApplicationController
     @like = Like.create(user_id: current_user.id, topic_id: params[:topic_id])
     if !current_user.hated_by?(@topic) && current_user.id != @topic.user_id
       @like.save
+      @topic.create_notification_like(current_user)
       redirect_to topic_path(@topic.id)
     else
       render "topics/show"

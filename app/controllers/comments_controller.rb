@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
     if @comment.save
+      @topic.create_notification_comment(current_user,@comment.id)
       redirect_to topic_path(params[:topic_id])
     else
       @comments = @topic.comments.includes(:user)

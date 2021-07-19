@@ -9,6 +9,8 @@ class User < ApplicationRecord
          has_many :comments, dependent: :destroy
          has_many :likes, dependent: :destroy
          has_many :liked_topics, through: :likes, source: :topic
+         has_many :active_notifications, class_name: "Notification", foreign_key:"visitor_id", dependent: :destroy
+        has_many :passive_notifications, class_name: "Notification", foreign_key:"visited_id", dependent: :destroy
          def liked_by?(topic_id)
           likes.where(topic_id: topic_id).exists?
         end
