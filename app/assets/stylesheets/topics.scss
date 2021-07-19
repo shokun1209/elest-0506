@@ -23,9 +23,7 @@
 .side-category.other{
   margin-bottom: 15%;
 }
-.all{
-  // display: flex;
-}
+
 .side{
   width: 30vw;
   display: flex;
@@ -34,7 +32,7 @@
   align-content: flex-start;
   align-items: center;
   padding-bottom: 50px;
-  overflow: scroll;
+  // overflow: scroll;
   overflow-y: scroll;
   -ms-overflow-style: none;    /* IE, Edge 対応 */
 }
@@ -125,7 +123,7 @@ display:none;
 
 .topic-link{
   text-decoration: none;
-  width: 40%;
+  width: 30%;
   margin-bottom: 5%;
 }
 .topics{
@@ -179,7 +177,7 @@ display:none;
   right: 0px;
 }
 .main-left{
-  width: 60vw;
+  width: 75vw;
   height: calc(100vh - 100px);
   display: flex;
   flex-wrap:wrap;
@@ -199,11 +197,11 @@ display:none;
 .main-left::after{
   content:"";
   display: block;
-  width:40%;
+  width: calc(9% + (75vw / 2));
 }
 .main-right{
   background-color: rgb(100, 100, 100);
-  width: 20vw;
+  width: 25vw;
   height: calc(100vh - 100px);
   display: flex;
   justify-content: space-around;
@@ -599,10 +597,10 @@ img{
 .attention-link{
   text-decoration: none;
   margin-bottom: 10%;
-  width: 17vw;
+  width: 20vw;
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 770px) {
   #sidebarMenu{
     transform: translateX(-70vw);
   }
@@ -612,7 +610,7 @@ img{
     height: 100vh;
   }
   .main-left{
-    width: 65vw;
+    width: 100vw;
     height: 90vh;
     justify-content: center;
   }

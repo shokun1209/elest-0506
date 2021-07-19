@@ -1,5 +1,5 @@
 <%= render "shared/side" %>
-
+<%= render "shared/header" %>
 <div class="show-user-main">
   <div class="show-user-left">
     <div class="user-date">
@@ -8,42 +8,45 @@
       <% else %>
         <%= image_tag "icon.png", class: "show-user-image" %><br>
       <% end %>
-      ニックネーム：<%= @user.nickname %><br>
-      匿名時のID：<%= @user.public_uid %><br>
+      ニックネーム<br><%= @user.nickname %><br><br>
+      匿名表示<br>ID:<%= @user.public_uid %><br>
     </div>
     <div class="user-topics-date">
-      投稿したトピック数：<%= @user.topics.count %>件<br>
-      コメントした数：<%= @user.comments.count %>回<br>
-      Goodボタンを押した数：<%= @user.likes.count %>回<br>
-      Badボタンを押した数： <%= @user.bads.count %>回<br>
+      <div class="date-category">投稿したトピック数<br><%= @user.topics.count %>件</div>
+      <div class="date-category">コメントした数<br><%= @user.comments.count %>回</div>
+      <div class="date-category">Goodした数<br><%= @user.likes.count %>回</div>
+      <div class="date-category">Badした数<br><%= @user.bads.count %>回</div>
     </div>
   </div>
   <div class="show-user-right">
-    <h1><%= @user.nickname %>さんの投稿記事一覧</h1>
-    <% if @topics.present? %>
-      <% @topics.each do |topics| %>
-        <div class="user-topics">
-          <%= link_to topics.title, topic_path(topics), class:"user-topic" %>
-          　<i class="far fa-comment"></i><%= topics.comments.count %>件
-        (<%= time_ago_in_words(topics.created_at) %>前)
-        </div>
-      <% end %>
-    <% else %>
-      投稿したトピックはまだありません。
-    <% end %>
-    <h3 class="text-center">通知</h3>
-    <%= link_to "通知削除", topic_notification_path(@notifications), method: :delete %>
-    <% if @notifications.present? %>
-      <% @notifications.each do |notification| %>
-        <p><i class="fas fa-bell"></i><%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span></p>
-        <br>
-        <% if !@comment.nil? %>
-          <p class="notification-comment"><%= @comment %></p>
+    <div class="user-topics">
+      <div class=user-title><i class="fas fa-pen-alt"></i>投稿トピック一覧</div>
+      <% if @topics.present? %>
+        <% @topics.each do |topics| %>
+          <div class="user-topic">
+            <%= link_to topics.title, topic_path(topics), class:"user-topic-link" %>
+            <i class="far fa-comment-dots"></i><%= topics.comments.count %>件<br>
+            (<%= time_ago_in_words(topics.created_at) %>前)
+          </div>
         <% end %>
+      <% else %>
+        <p>投稿したトピックはまだありません。</p>
       <% end %>
-    <% else %>
-      <p>通知はありません</p>
-    <% end %>
+    </div>
+    <div class="notifications">
+      <div class=user-title><i class="fas fa-bell"></i>通知一覧</div>
+      <%= link_to "通知削除", topic_notification_path(@notifications), method: :delete %>
+      <% if @notifications.present? %>
+        <% @notifications.each do |notification| %>
+          <div class="user-notification"><%= notification_form(notification) %><span class="moderate-font"><br><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span></div>
+          <% if !@comment.nil? %>
+            <p class="notification-comment"><%= @comment %></p>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>通知はありません。</p>
+      <% end %>
+    </div>
   </div>
 </div>
 

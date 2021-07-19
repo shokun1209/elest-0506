@@ -1,37 +1,34 @@
 <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
 <label for="openSidebarMenu" class="sidebarIconToggle">
-  <div class="spinner diagonal part-1"></div>
-  <div class="spinner horizontal"></div>
-  <div class="spinner diagonal part-2"></div>
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
 </label>
 <div class="side", id="sidebarMenu">
-
-    <% if user_signed_in? %>
-      <div class="current-user">
-        <%= link_to user_path(current_user.id), class:"header-link" do %>
-          <% if current_user.image.present? %>
-            <%= image_tag current_user.image_url, class:"header-icon" %>
-          <% else %>
-            <%= image_tag 'icon.png', class: "header-icon" %><br>
-          <% end %>
-          <div class="user-date"><%= current_user.nickname %><br>
-          ID: <%= current_user.public_uid %></div>
+  <% if user_signed_in? %>
+    <div class="current-user">
+      <%= link_to user_path(current_user.id), class:"header-link" do %>
+        <% if current_user.image.present? %>
+          <%= image_tag current_user.image_url, class:"header-icon" %>
+        <% else %>
+          <%= image_tag 'icon.png', class: "header-icon" %><br>
         <% end %>
-      </div>
-    <% end %>
-    <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "タイトルで検索", autocomplete: 'off', class: "search-input" %>
-      <%= button_tag type:'submit', class: "search-btn" do %>
-        <i class="fas fa-search"></i>
+        <div class="user-date"><%= current_user.nickname %><br>
+        ID: <%= current_user.public_uid %></div>
       <% end %>
+    </div>
+  <% end %>
+  <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "タイトルで検索", autocomplete: 'off', class: "search-input" %>
+    <%= button_tag type:'submit', class: "search-btn" do %>
+      <i class="fas fa-search"></i>
     <% end %>
-    <%= link_to "アリーナ", arena_topics_path ,class:"side-category arena" %>
-    <%= link_to "グランバトル", gran_topics_path ,class:"side-category gran" %>
-    <%= link_to "イベント", event_topics_path ,class:"side-category event" %>
-    <%= link_to "ガチャ", gacha_topics_path ,class:"side-category gacha" %>
-    <%= link_to "晒し", doxing_topics_path ,class:"side-category doxing" %>
-    <%= link_to "チーム募集", team_topics_path ,class:"side-category team" %>
-    <%= link_to "その他", other_topics_path ,class:"side-category other" %>
-
-
+  <% end %>
+  <%= link_to "アリーナ", arena_topics_path ,class:"side-category arena" %>
+  <%= link_to "グランバトル", gran_topics_path ,class:"side-category gran" %>
+  <%= link_to "イベント", event_topics_path ,class:"side-category event" %>
+  <%= link_to "ガチャ", gacha_topics_path ,class:"side-category gacha" %>
+  <%= link_to "晒し", doxing_topics_path ,class:"side-category doxing" %>
+  <%= link_to "チーム募集", team_topics_path ,class:"side-category team" %>
+  <%= link_to "その他", other_topics_path ,class:"side-category other" %>
 </div>

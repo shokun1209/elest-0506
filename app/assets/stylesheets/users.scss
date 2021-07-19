@@ -9,12 +9,16 @@
 .show-user-left{
   width: 25vw;
   background-color: gray;
-  height: 100vh;
+  height: calc(100vh - 100px);
   text-align: center;
 }
+.show-user-right{
+  height: calc(100vh - 100px);
+  width: 75vw;
+}
 .show-user-image{
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   margin-top: 5%;
   border: whitesmoke solid 2px;
@@ -23,15 +27,62 @@
   margin-top: 20%;
 }
 .user-topics{
-  margin: 10px;
+  height: calc(50vh - 50px);
+  padding: 0 5px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+}
+.user-topics::-webkit-scrollbar{  /* Chrome, Safari 対応 */
+display:none;
+}
+
+.notifications{
+  height: calc(50vh - 50px);
+  padding: 0 5px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+}
+.notifications::-webkit-scrollbar{  /* Chrome, Safari 対応 */
+  display:none;
+}
+.user-title{
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 5px;
+}
+.fa-pen-alt{
+  color: green;
+  margin: 0 5px;
 }
 .user-topic{
+  margin: 10px 0;
+}
+.user-topic-link{
   color: black;
+  font-weight: 800;
+}
+.user-notification{
+  margin: 10px 0;
 }
 
 
 @media screen and (max-width: 599px) {
+  .show-user-image{
+    width: 100px;
+    height: 100px;
+  }
+  .show-user-main{
+    font-size: 12px;
+  }
   .show-user-left{
-    width: 80%;
+    height: 90vh;
+    width: 40vw;
+  }
+  .show-user-right{
+    height: 90vh;
+    width: 60vw;
+  }
+  .date-category{
+    font-size: 12px;
   }
 }
