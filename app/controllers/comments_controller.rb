@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_topic, only: [:create,:destroy]
   before_action :set_validates, only: [:create, :destroy]
+  before_action :set_comment, only:[:edit, :update, :destroy]
 
 
   def create
@@ -15,7 +16,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(id: params[:id],topic_id: params[:topic_id])
     if current_user.id == @comment.user_id
       @comment.destroy
       redirect_to topic_path(@topic.id)
@@ -32,6 +32,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment,:type_id,:anonymous,{images: []}).merge(topic_id: params[:topic_id],user_id: current_user.id)
+  end
+
+  def set_comment
+    @comment = Comment.find_by(id: params[:id],topic_id: params[:topic_id])
   end
 
   def set_validates

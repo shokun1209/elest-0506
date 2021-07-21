@@ -48,7 +48,7 @@
   transform: translateX(-40vw);
   transition: transform 250ms ease-in-out;
   background-color: rgba(0, 0, 0, 0.9);
-  z-index: 3;
+  z-index: 90;
   padding-bottom: 100px;
 }
 
@@ -129,7 +129,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle{
   background-color: rgba(0, 0, 0, 0);
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 770px) {
   .sidebarIconToggle {
     top: 10px;
     left: 10px;

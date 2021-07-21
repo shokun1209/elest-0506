@@ -12,10 +12,13 @@
       匿名表示<br>ID:<%= @user.public_uid %><br>
     </div>
     <div class="user-topics-date">
+    <%= link_to "管理者画面へ", admin_root_path %>
       <div class="date-category">投稿したトピック数<br><%= @user.topics.count %>件</div>
       <div class="date-category">コメントした数<br><%= @user.comments.count %>回</div>
       <div class="date-category">Goodした数<br><%= @user.likes.count %>回</div>
       <div class="date-category">Badした数<br><%= @user.bads.count %>回</div>
+      <div class="date-category">Goodされた数<br><%= @l_count %>回</div>
+      <div class="date-category">Badされた数<br><%= @b_count %>回</div>
     </div>
   </div>
   <div class="show-user-right">
@@ -30,13 +33,13 @@
           </div>
         <% end %>
       <% else %>
-        <p>投稿したトピックはまだありません。</p>
+        <div class="user-topic">投稿したトピックはありません。</div>
       <% end %>
     </div>
     <div class="notifications">
       <div class=user-title><i class="fas fa-bell"></i>通知一覧</div>
-      <%= link_to "通知削除", topic_notification_path(@notifications), method: :delete %>
       <% if @notifications.present? %>
+        <%= link_to "通知削除", topic_notification_path(@notifications), method: :delete %>
         <% @notifications.each do |notification| %>
           <div class="user-notification"><%= notification_form(notification) %><span class="moderate-font"><br><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span></div>
           <% if !@comment.nil? %>
@@ -44,7 +47,7 @@
           <% end %>
         <% end %>
       <% else %>
-        <p>通知はありません。</p>
+        <div class="user-topic">通知はありません。</div>
       <% end %>
     </div>
   </div>

@@ -66,13 +66,13 @@ display:none;
 }
 
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 770px) {
   .show-user-image{
     width: 100px;
     height: 100px;
   }
   .show-user-main{
-    font-size: 12px;
+    font-size: 16px;
   }
   .show-user-left{
     height: 90vh;
@@ -81,6 +81,15 @@ display:none;
   .show-user-right{
     height: 90vh;
     width: 60vw;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .show-user-main{
+    font-size: 14px;
+  }
+  .user-title{
+    font-size: 18px;
   }
   .date-category{
     font-size: 12px;
