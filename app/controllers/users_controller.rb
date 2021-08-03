@@ -6,10 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    unless user_signed_in? && current_user.id == @user.id
-      redirect_to root_path
-    end
-    @topics = @user.topics.order('created_at DESC')
+    redirect_to root_path unless user_signed_in? && current_user.id == @user.id
+    @topics = @user.topics.order('created_at DESC').includes(:likes,:bads)
 
     @l_count = 0
     @b_count = 0

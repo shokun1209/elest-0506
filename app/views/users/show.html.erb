@@ -12,7 +12,7 @@
       匿名表示<br>ID:<%= @user.public_uid %><br>
     </div>
     <div class="user-topics-date">
-    <%= link_to "管理者画面へ", admin_root_path %>
+    <%= link_to "管理者画面へ", admin_root_path if @user.admin == true %>
       <div class="date-category">投稿したトピック数<br><%= @user.topics.count %>件</div>
       <div class="date-category">コメントした数<br><%= @user.comments.count %>回</div>
       <div class="date-category">Goodした数<br><%= @user.likes.count %>回</div>
