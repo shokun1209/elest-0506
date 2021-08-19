@@ -27,7 +27,7 @@ ja:
         one:   "1ヶ月"
         other: "%{count}ヶ月"
       almost_x_years:
-        one:   "１年弱"
+        one:   "1年弱"
         other: "%{count}年弱"
       about_x_years:
         one:   "約1年"
