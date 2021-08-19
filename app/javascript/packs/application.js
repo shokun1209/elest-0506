@@ -1,4 +1,3 @@
-import '@fortawesome/fontawesome-free/js/all';
 
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -13,6 +12,7 @@ require("channels")
 require("../preview")
 require("../scroll")
 require("../side")
+import '@fortawesome/fontawesome-free/js/all';
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

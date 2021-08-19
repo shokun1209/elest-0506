@@ -2,4 +2,4 @@
 // see `active_admin.scss` for customization.
 import "../stylesheets/active_admin";
 
-import "@activeadmin/activeadmin";
+// import "@activeadmin/activeadmin";
