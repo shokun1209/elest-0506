@@ -51,10 +51,18 @@
   box-sizing: border-box;
 }
 .current-user{
+  height: 200px;
   text-align: center;
   box-sizing: border-box;
   color: white;
   padding-top: 5%;
+}
+.current-user2{
+  height: 200px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 800;
 }
 .header-link{
   text-decoration: none;
@@ -93,13 +101,17 @@
     margin-bottom: 3px;
   }
   .header-icon{
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
   .current-user{
+    height: 120px;
     text-align: center;
     box-sizing: border-box;
     color: white;
     margin-bottom: 5%;
+  }
+  .current-user2{
+    height: 120px;
   }
 }

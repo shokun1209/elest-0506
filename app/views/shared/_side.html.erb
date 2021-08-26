@@ -17,6 +17,10 @@
         ID: <%= current_user.public_uid %></div>
       <% end %>
     </div>
+  <% else %>
+    <div class="current-user2">
+      <div>No Login</div>
+    </div>
   <% end %>
   <%= form_with(url: search_self_topics_path, local: true, method: :get, class: "search-form") do |form| %>
     <%= form.text_field :keyword, placeholder: "タイトルで検索", autocomplete: 'off', class: "search-input" %>
