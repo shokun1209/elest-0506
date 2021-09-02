@@ -84,6 +84,39 @@ display:none;
   }
 }
 
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  background-color: rgb(65, 140, 190);
+}
+
+.login-main{
+  height: 60%;
+  width: 70%;
+  padding-top: 5vh;
+}
+.field,.actions{
+  margin: 3vh 0;
+}
+.user-preview{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.preview{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 359px) {
   .show-user-main{
     font-size: 14px;
